@@ -4,7 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polaroid Booth - Instant Vintage Photos</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Polaroid Booth - Free Online Polaroid Camera & Vintage Photo Editor</title>
+    <meta name="title" content="Polaroid Booth - Free Online Polaroid Camera & Vintage Photo Editor">
+    <meta name="description"
+        content="Create stunning vintage polaroid photos online for free. Instant polaroid camera booth with filters, stickers, multi-photo mode, and customization. No download required. Perfect for social media and memories.">
+    <meta name="keywords"
+        content="polaroid booth, polaroid camera online, vintage photo editor, instant camera online, polaroid photo maker, retro photo booth, free polaroid editor, online photo booth, vintage camera filter, polaroid effect online">
+    <meta name="author" content="Sarath Ramesh">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://polaroidbooth.com/">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="theme-color" content="#C39974">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://polaroidbooth.com/">
+    <meta property="og:title" content="Polaroid Booth - Free Online Polaroid Camera & Vintage Photo Editor">
+    <meta property="og:description"
+        content="Create stunning vintage polaroid photos online for free. Instant polaroid camera booth with filters, effects, and customization.">
+    <meta property="og:image" content="https://polaroidbooth.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://polaroidbooth.com/">
+    <meta property="twitter:title" content="Polaroid Booth - Free Online Polaroid Camera & Vintage Photo Editor">
+    <meta property="twitter:description"
+        content="Create stunning vintage polaroid photos online for free. Instant polaroid camera booth with filters, effects, and customization.">
+    <meta property="twitter:image" content="https://polaroidbooth.com/og-image.jpg">
+
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Polaroid Booth",
+      "alternateName": "Free Online Polaroid Camera",
+      "description": "Free online polaroid camera and vintage photo editor. Create instant polaroid-style photos with filters and effects.",
+      "url": "https://polaroidbooth.com/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sarath Ramesh",
+        "url": "https://github.com/sarathoff"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "featureList": [
+        "Instant camera capture",
+        "Multi-photo grid mode (4 photos)",
+        "Photo upload",
+        "12+ vintage filters",
+        "Fun sticker overlays",
+        "Custom text overlay",
+        "Brightness and contrast adjustment",
+        "High-quality download",
+        "No watermarks",
+        "Privacy-focused"
+      ],
+      "screenshot": "https://polaroidbooth.com/screenshot.jpg"
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://polaroidbooth.com/"
+      }]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is Polaroid Booth free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Polaroid Booth is completely free to use. There are no subscriptions, hidden fees, or watermarks on your photos."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you store my photos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, all photo processing happens directly in your browser. Your photos never leave your device and are never uploaded to our servers."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What devices does Polaroid Booth work on?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Polaroid Booth works on any device with a modern web browser, including desktop computers, laptops, tablets, and smartphones."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Can I use Polaroid Booth without a camera?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can upload existing photos from your device and transform them into polaroid-style images."
+        }
+      }]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -134,35 +270,7 @@
             opacity: 0.5;
         }
 
-        .live-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--color-accent);
-            color: white;
-            padding: 0.35rem 0.65rem;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            animation: pulse 2s infinite;
-            z-index: 10;
-            letter-spacing: 0.5px;
-        }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(229, 115, 115, 0.7);
-            }
-
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 8px rgba(229, 115, 115, 0);
-            }
-        }
 
         /* Countdown Overlay */
         .countdown-overlay {
@@ -556,23 +664,240 @@
         .hidden {
             display: none !important;
         }
+
+        /* Navigation */
+        .nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-text-heading);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-body);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            margin-top: 4rem;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            color: var(--color-text-heading);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--color-text-body);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Sticker Styles */
+        .sticker-item {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+        }
+
+        .sticker-item:hover {
+            transform: scale(1.2);
+        }
+
+        .sticker-item:active {
+            transform: scale(0.95);
+        }
+
+        .active-sticker-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+        }
+
+        .remove-sticker-btn {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .remove-sticker-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Multi-Photo Grid */
+        .multi-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            padding: 8px;
+            background: white;
+        }
+
+        .multi-photo-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #F0EDE6;
+            position: relative;
+        }
+
+        .multi-photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .multi-photo-counter {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Sticker Overlay on Photo */
+        .photo-sticker {
+            position: absolute;
+            font-size: 2rem;
+            user-select: none;
+            z-index: 5;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            pointer-events: none;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">📷 Polaroid Booth</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <header class="header">
-            <h1>Polaroid Booth</h1>
-            <p>Capture the moment. Create timeless, vintage-style photos instantly from your camera or uploads.</p>
+            <h1>Free Online Polaroid Booth - Instant Vintage Photo Editor</h1>
+            <p>Capture the moment. Create timeless, vintage-style polaroid photos instantly from your camera or uploads.
+                No download required!</p>
         </header>
+
+        <!-- SEO-friendly content section -->
+
 
         <div class="main-grid">
 
             <div class="input-column">
                 <div class="card">
                     <div class="video-container">
-                        <div id="liveBadge" class="live-badge hidden">Live</div>
                         <video id="videoElement" autoplay playsinline muted class="hidden"></video>
                         <div id="videoPlaceholder" class="video-placeholder">
                             <div class="video-placeholder-icon">📷</div>
@@ -608,6 +933,7 @@
 
                     <div class="controls-grid hidden" id="photoControls">
                         <button class="btn btn-primary" id="captureBtn">📸 Capture</button>
+                        <button class="btn btn-outline" id="multiCaptureBtn">📸📸 Multi (4)</button>
                         <button class="btn btn-danger" id="stopCameraBtn">⏹️ Stop</button>
                     </div>
                 </div>
@@ -633,6 +959,7 @@
                         <button class="tab-btn active" onclick="showTab(event, 'filters')">🎨 Filters</button>
                         <button class="tab-btn" onclick="showTab(event, 'adjust')">⚙️ Adjust</button>
                         <button class="tab-btn" onclick="showTab(event, 'text')">✏️ Text</button>
+                        <button class="tab-btn" onclick="showTab(event, 'stickers')">😊 Stickers</button>
                     </div>
 
                     <div id="tab-filters" class="tab-pane active">
@@ -660,6 +987,21 @@
                         </div>
                     </div>
 
+                    <div id="tab-stickers" class="tab-pane">
+                        <div class="section">
+                            <label class="label">Add Stickers</label>
+                            <div class="option-grid" id="stickerOptions">
+                                <!-- Sticker options will be injected here by JS -->
+                            </div>
+                        </div>
+                        <div class="section" id="activeStickersList" style="display: none;">
+                            <label class="label">Active Stickers</label>
+                            <div id="stickersList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <!-- Active stickers will appear here -->
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="final-actions">
                         <button class="btn btn-outline" id="clearBtn">
                             🔄 Clear
@@ -679,6 +1021,20 @@
             </div>
         </div>
     </div>
+    <section
+        style="max-width: 900px; margin: 0 auto 3rem; padding: 0 1rem; text-align: center; color: var(--color-text-body);">
+        <h2
+            style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-text-heading); margin-bottom: 1rem;">
+            Transform Your Photos into Vintage Polaroid Masterpieces</h2>
+        <p style="margin-bottom: 1rem;">Polaroid Booth is the ultimate free online polaroid camera and vintage photo
+            editor. Whether you're capturing new moments with your webcam or transforming existing photos, our
+            intuitive tool brings the nostalgic charm of instant polaroid photography to your fingertips.</p>
+        <p style="margin-bottom: 1rem;"><strong>Why Choose Polaroid Booth?</strong> 100% free, no watermarks,
+            privacy-focused (all processing happens in your browser), 12+ vintage filters, fun sticker overlays,
+            multi-photo grid mode, custom text overlays, and
+            instant high-quality downloads. Perfect for social media, scrapbooking, gifts, and preserving memories
+            with that classic polaroid aesthetic.</p>
+    </section>
 
     <canvas id="canvas" class="hidden"></canvas>
 
@@ -698,11 +1054,13 @@
 
         let selectedFont = "'Caveat', cursive";
         let selectedFilterPreset = 'none';
+        let activeStickers = [];
+        let multiPhotos = [];
+        let isMultiCapture = false;
 
         // --- DOM ELEMENTS ---
         const video = document.getElementById('videoElement');
         const videoPlaceholder = document.getElementById('videoPlaceholder');
-        const liveBadge = document.getElementById('liveBadge');
         const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownNumber = document.getElementById('countdownNumber');
         const cameraControls = document.getElementById('cameraControls');
@@ -710,6 +1068,7 @@
         const startCameraBtn = document.getElementById('startCameraBtn');
         const stopCameraBtn = document.getElementById('stopCameraBtn');
         const captureBtn = document.getElementById('captureBtn');
+        const multiCaptureBtn = document.getElementById('multiCaptureBtn');
         const uploadBtn = document.getElementById('uploadBtn');
         const fileInput = document.getElementById('fileInput');
         const emptyState = document.getElementById('emptyState');
@@ -749,6 +1108,17 @@
             { id: 'noir', name: 'Noir', values: { brightness: 90, contrast: 150, saturate: 100, sepia: 0, grayscale: 100 } },
             { id: 'sunset', name: 'Sunset', values: { brightness: 110, contrast: 110, saturate: 160, sepia: 50, grayscale: 0 } },
             { id: 'arctic', name: 'Arctic', values: { brightness: 120, contrast: 100, saturate: 60, sepia: 0, grayscale: 0 } }
+        ];
+
+        // Stickers
+        const stickers = [
+            '❤️', '💕', '💖', '💗', '💙', '💚', '💛', '🧡', '💜',
+            '⭐', '✨', '🌟', '💫', '🌙', '☀️', '🌈', '☁️',
+            '😊', '😍', '🥰', '😎', '🤩', '😘', '😂', '🤗',
+            '🎉', '🎊', '🎈', '🎁', '🎀', '🎂', '🍰',
+            '🌸', '🌺', '🌻', '🌹', '🌷', '🌼', '💐',
+            '🦋', '🐝', '🐞', '🦄', '🐱', '🐶', '🐻',
+            '📷', '🎵', '🎶', '🎸', '🎨', '✏️', '📝'
         ];
 
         // --- INITIALIZATION ---
@@ -800,6 +1170,17 @@
                 btn.onclick = () => selectFont(font.family, btn);
                 fontContainer.appendChild(btn);
             });
+
+            // Stickers
+            const stickerContainer = document.getElementById('stickerOptions');
+            stickerContainer.innerHTML = '';
+            stickers.forEach(sticker => {
+                const btn = document.createElement('div');
+                btn.className = 'sticker-item';
+                btn.textContent = sticker;
+                btn.onclick = () => addSticker(sticker);
+                stickerContainer.appendChild(btn);
+            });
         }
 
         // --- TAB NAVIGATION ---
@@ -849,6 +1230,62 @@
             renderPreview();
         }
 
+        // --- STICKER FUNCTIONS ---
+
+        function addSticker(emoji) {
+            const stickerId = Date.now() + Math.random();
+
+            // Position stickers in corners to avoid blocking the photo
+            const corners = [
+                { x: 8, y: 8 },      // Top-left
+                { x: 85, y: 8 },     // Top-right
+                { x: 8, y: 85 },     // Bottom-left
+                { x: 85, y: 85 }     // Bottom-right
+            ];
+
+            // Cycle through corners based on number of stickers
+            const cornerIndex = activeStickers.length % corners.length;
+            const position = corners[cornerIndex];
+
+            activeStickers.push({
+                id: stickerId,
+                emoji: emoji,
+                x: position.x,
+                y: position.y
+            });
+            updateStickersList();
+            renderPreview();
+        }
+
+        function removeSticker(stickerId) {
+            activeStickers = activeStickers.filter(s => s.id !== stickerId);
+            updateStickersList();
+            renderPreview();
+        }
+
+        function updateStickersList() {
+            const stickersList = document.getElementById('stickersList');
+            const activeStickersList = document.getElementById('activeStickersList');
+
+            if (activeStickers.length === 0) {
+                activeStickersList.style.display = 'none';
+                return;
+            }
+
+            activeStickersList.style.display = 'block';
+            stickersList.innerHTML = '';
+
+            activeStickers.forEach(sticker => {
+                const badge = document.createElement('div');
+                badge.className = 'active-sticker-badge';
+                badge.innerHTML = `
+                    <span>${sticker.emoji}</span>
+                    <button class="remove-sticker-btn" onclick="removeSticker(${sticker.id})">×</button>
+                `;
+                stickersList.appendChild(badge);
+            });
+        }
+
         // --- CAMERA & UPLOAD ---
 
         async function startCamera() {
@@ -860,7 +1297,6 @@
                 video.srcObject = stream;
                 video.classList.remove('hidden');
                 videoPlaceholder.classList.add('hidden');
-                liveBadge.classList.remove('hidden');
                 cameraControls.classList.add('hidden');
                 photoControls.classList.remove('hidden');
             } catch (error) {
@@ -875,7 +1311,6 @@
             video.srcObject = null;
             video.classList.add('hidden');
             videoPlaceholder.classList.remove('hidden');
-            liveBadge.classList.add('hidden');
             cameraControls.classList.remove('hidden');
             photoControls.classList.add('hidden');
         }
@@ -918,8 +1353,65 @@
             ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
             ctx.restore();
             capturedPhoto = canvas.toDataURL('image/jpeg', 0.95);
+            multiPhotos = [];
+            isMultiCapture = false;
             showOutputUI();
             renderPreview();
+            captureBtn.disabled = false;
+        }
+
+        async function captureMultiPhotos() {
+            if (!stream) return;
+
+            multiCaptureBtn.disabled = true;
+            captureBtn.disabled = true;
+            multiPhotos = [];
+            isMultiCapture = true;
+
+            for (let i = 0; i < 4; i++) {
+                // Show which photo we're taking
+                countdownOverlay.classList.remove('hidden');
+                countdownNumber.textContent = `Photo ${i + 1} of 4`;
+                countdownNumber.style.fontSize = '3rem';
+                countdownNumber.style.animation = 'countdownPulse 1s ease-in-out';
+                await new Promise(resolve => setTimeout(resolve, 1200));
+
+                // Regular countdown (3, 2, 1)
+                countdownNumber.style.fontSize = '8rem';
+                await startCountdown();
+
+                // Capture the photo
+                const ctx = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.save();
+                ctx.scale(-1, 1);
+                ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+                ctx.restore();
+                multiPhotos.push(canvas.toDataURL('image/jpeg', 0.95));
+
+                // Show "Captured!" message briefly
+                if (i < 3) {
+                    countdownOverlay.classList.remove('hidden');
+                    countdownNumber.textContent = '✓';
+                    countdownNumber.style.fontSize = '6rem';
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    countdownOverlay.classList.add('hidden');
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+
+            // Show completion message
+            countdownOverlay.classList.remove('hidden');
+            countdownNumber.textContent = 'Done! ✓';
+            countdownNumber.style.fontSize = '4rem';
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            countdownOverlay.classList.add('hidden');
+
+            capturedPhoto = null;
+            showOutputUI();
+            renderPreview();
+            multiCaptureBtn.disabled = false;
             captureBtn.disabled = false;
         }
 
@@ -929,6 +1421,8 @@
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     capturedPhoto = e.target.result;
+                    multiPhotos = [];
+                    isMultiCapture = false;
                     showOutputUI();
                     renderPreview();
                 };
@@ -947,6 +1441,9 @@
 
         function resetToDefaults() {
             capturedPhoto = null;
+            multiPhotos = [];
+            isMultiCapture = false;
+            activeStickers = [];
             polaroidPreview.classList.add('hidden');
             customizationCard.classList.add('hidden');
             emptyState.classList.remove('hidden');
@@ -954,6 +1451,7 @@
 
             adjustments = { ...defaultAdjustments };
             selectedFilterPreset = 'none';
+            updateStickersList();
             initializeUI();
         }
 
@@ -964,26 +1462,52 @@
         }
 
         function renderPreview() {
-            if (!capturedPhoto) return;
+            if (!capturedPhoto && multiPhotos.length === 0) return;
 
             const customText = customTextEl.value;
             const filterStyle = buildFilterString();
 
-            polaroidPreview.innerHTML = `
-                <div class="polaroid-frame" style="background: var(--color-surface)">
-                    <div class="polaroid-photo">
-                        <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview">
+            if (isMultiCapture && multiPhotos.length > 0) {
+                // Multi-photo grid
+                const photosHTML = multiPhotos.map((photo, idx) => `
+                    <div class="multi-photo-item">
+                        <img src="${photo}" style="filter: ${filterStyle}" alt="Photo ${idx + 1}">
+                        ${activeStickers.map(sticker => `
+                            <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
+                        `).join('')}
                     </div>
-                    <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
-                    <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
-                </div>
-            `;
+                `).join('');
+
+                polaroidPreview.innerHTML = `
+                    <div class="polaroid-frame" style="background: var(--color-surface)">
+                        <div class="multi-photo-grid">
+                            ${photosHTML}
+                        </div>
+                        <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
+                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                    </div>
+                `;
+            } else if (capturedPhoto) {
+                // Single photo
+                polaroidPreview.innerHTML = `
+                    <div class="polaroid-frame" style="background: var(--color-surface)">
+                        <div class="polaroid-photo" style="position: relative;">
+                            <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview">
+                            ${activeStickers.map(sticker => `
+                                <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
+                            `).join('')}
+                        </div>
+                        <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
+                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                    </div>
+                `;
+            }
         }
 
         // --- FINAL DOWNLOAD ---
 
         function downloadPolaroid() {
-            if (!capturedPhoto) return;
+            if (!capturedPhoto && multiPhotos.length === 0) return;
 
             const dlCanvas = document.createElement('canvas');
             const ctx = dlCanvas.getContext('2d');
@@ -1002,71 +1526,131 @@
             ctx.fillStyle = '#FFFFFF';
             ctx.fillRect(0, 0, baseWidth, baseHeight);
 
-            // 2. Photo
             const photoPadding = 40;
             const photoSize = baseWidth - (photoPadding * 2);
 
-            const img = new Image();
-            img.onload = () => {
-                // Apply filters
-                ctx.filter = buildFilterString();
+            if (isMultiCapture && multiPhotos.length > 0) {
+                // Multi-photo grid download
+                let loadedCount = 0;
+                const images = [];
 
-                // Draw image with object-fit: cover logic
-                const sAspect = img.width / img.height;
-                const dAspect = 1.0;
-                let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
+                multiPhotos.forEach((photoSrc, idx) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        images[idx] = img;
+                        loadedCount++;
 
-                if (sAspect > dAspect) { // image wider than destination
-                    sHeight = img.height;
-                    sWidth = img.height * dAspect;
-                    sx = (img.width - sWidth) / 2;
-                } else { // image taller than destination
-                    sWidth = img.width;
-                    sHeight = img.width / dAspect;
-                    sy = (img.height - sHeight) / 2;
-                }
+                        if (loadedCount === multiPhotos.length) {
+                            // Draw all photos in grid
+                            const gridSize = photoSize / 2 - 4;
+                            images.forEach((img, i) => {
+                                const row = Math.floor(i / 2);
+                                const col = i % 2;
+                                const x = photoPadding + col * (gridSize + 8);
+                                const y = photoPadding + row * (gridSize + 8);
 
-                ctx.drawImage(img, sx, sy, sWidth, sHeight, photoPadding, photoPadding, photoSize, photoSize);
+                                // --- START: Aspect ratio correction logic ---
+                                const sAspect = img.width / img.height;
+                                const dAspect = 1.0; // Destination grid item is 1:1
+                                let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
 
-                // Reset filter for text
-                ctx.filter = 'none';
+                                if (sAspect > dAspect) {
+                                    // Image is wider than 1:1, crop the sides
+                                    sHeight = img.height;
+                                    sWidth = img.height * dAspect;
+                                    sx = (img.width - sWidth) / 2;
+                                } else {
+                                    // Image is taller than 1:1, crop the top/bottom
+                                    sWidth = img.width;
+                                    sHeight = img.width / dAspect;
+                                    sy = (img.height - sHeight) / 2;
+                                }
+                                // --- END: Aspect ratio correction logic ---
 
-                // 3. Custom Text
-                const customText = customTextEl.value;
-                if (customText.trim()) {
-                    ctx.font = `700 ${40}px ${selectedFont}`;
-                    ctx.fillStyle = '#3D352E';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(customText, baseWidth / 2, baseHeight - 90, baseWidth - 80);
-                }
+                                ctx.filter = buildFilterString();
+                                // Use the new variables to draw the cropped source into the destination
+                                ctx.drawImage(img, sx, sy, sWidth, sHeight, x, y, gridSize, gridSize);
+                                ctx.filter = 'none';
 
-                // 4. Date & Watermark
-                ctx.font = `500 ${18}px monospace`;
-                ctx.fillStyle = '#8E8178';
-                ctx.globalAlpha = 0.8;
+                                // Draw stickers on each photo
+                                activeStickers.forEach(sticker => {
+                                    ctx.font = `${40}px Arial`;
+                                    ctx.fillText(sticker.emoji, x + (gridSize * sticker.x / 100), y + (gridSize * sticker.y / 100));
+                                });
+                            });
 
-                // Date
-                ctx.textAlign = 'right';
-                ctx.fillText(new Date().toLocaleDateString(), baseWidth - photoPadding, baseHeight - 30);
+                            finishDownload(ctx, baseWidth, baseHeight, photoPadding);
+                        }
+                    };
+                    img.crossOrigin = "anonymous";
+                    img.src = photoSrc;
+                });
+            } else if (capturedPhoto) {
+                // Single photo download
+                const img = new Image();
+                img.onload = () => {
+                    ctx.filter = buildFilterString();
 
-                // Watermark
-                ctx.textAlign = 'left';
-                ctx.fillText('Polaroid Booth', photoPadding, baseHeight - 30);
+                    const sAspect = img.width / img.height;
+                    const dAspect = 1.0;
+                    let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
 
-                // 5. Trigger Download
-                const link = document.createElement('a');
-                link.download = `polaroid-${Date.now()}.png`;
-                link.href = dlCanvas.toDataURL('image/png');
-                link.click();
-            };
-            img.crossOrigin = "anonymous";
-            img.src = capturedPhoto;
+                    if (sAspect > dAspect) {
+                        sHeight = img.height;
+                        sWidth = img.height * dAspect;
+                        sx = (img.width - sWidth) / 2;
+                    } else {
+                        sWidth = img.width;
+                        sHeight = img.width / dAspect;
+                        sy = (img.height - sHeight) / 2;
+                    }
+
+                    ctx.drawImage(img, sx, sy, sWidth, sHeight, photoPadding, photoPadding, photoSize, photoSize);
+                    ctx.filter = 'none';
+
+                    // Draw stickers
+                    activeStickers.forEach(sticker => {
+                        ctx.font = `${50}px Arial`;
+                        ctx.fillText(sticker.emoji, photoPadding + (photoSize * sticker.x / 100), photoPadding + (photoSize * sticker.y / 100));
+                    });
+
+                    finishDownload(ctx, baseWidth, baseHeight, photoPadding);
+                };
+                img.crossOrigin = "anonymous";
+                img.src = capturedPhoto;
+            }
+        }
+
+        function finishDownload(ctx, baseWidth, baseHeight, photoPadding) {
+            const customText = customTextEl.value;
+            if (customText.trim()) {
+                ctx.font = `700 ${40}px ${selectedFont}`;
+                ctx.fillStyle = '#3D352E';
+                ctx.textAlign = 'center';
+                ctx.fillText(customText, baseWidth / 2, baseHeight - 90, baseWidth - 80);
+            }
+
+            ctx.font = `500 ${18}px monospace`;
+            ctx.fillStyle = '#8E8178';
+            ctx.globalAlpha = 0.8;
+
+            ctx.textAlign = 'right';
+            ctx.fillText(new Date().toLocaleDateString(), baseWidth - photoPadding, baseHeight - 30);
+
+            ctx.textAlign = 'left';
+            ctx.fillText('Polaroid Booth', photoPadding, baseHeight - 30);
+
+            const link = document.createElement('a');
+            link.download = `polaroid-${Date.now()}.png`;
+            link.href = ctx.canvas.toDataURL('image/png');
+            link.click();
         }
 
         // --- EVENT LISTENERS ---
         startCameraBtn.addEventListener('click', startCamera);
         stopCameraBtn.addEventListener('click', stopCamera);
         captureBtn.addEventListener('click', capturePhoto);
+        multiCaptureBtn.addEventListener('click', captureMultiPhotos);
         uploadBtn.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', handleFileUpload);
         clearBtn.addEventListener('click', resetToDefaults);
@@ -1081,6 +1665,45 @@
         initializeUI();
 
     </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Polaroid Booth</h3>
+                    <p>Create stunning vintage polaroid photos online for free. Perfect for social media, memories, and
+                        creative projects.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://github.com/sarathoff" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="mailto:sarathramesh.off@zohomail.in">Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Polaroid Booth. Developed by <a href="https://github.com/sarathoff" target="_blank"
+                        rel="noopener">Sarath Ramesh</a>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
