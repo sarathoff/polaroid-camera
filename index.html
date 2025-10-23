@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5GM0GFGRK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R5GM0GFGRK');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polaroid Booth - Instant Vintage Photos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background: #F8F5F2;
+            --color-surface: #FFFFFF;
+            --color-primary: #C39974;
+            --color-primary-deep: #B18965;
+            --color-text-heading: #3D352E;
+            --color-text-body: #594F48;
+            --color-text-muted: #8E8178;
+            --color-border: #EAE3DC;
+            --color-accent: #E57373;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --font-handwriting: 'Caveat', cursive;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-body);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-text-heading);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        @media (min-width: 992px) {
+            .main-grid {
+                grid-template-columns: 1fr 400px;
+            }
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* --- Left Column: Input --- */
+        .video-container {
+            position: relative;
+            aspect-ratio: 1/1;
+            background: #EAE3DC;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 6px solid var(--color-surface);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1);
+            display: block;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .video-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: grayscale(1);
+            opacity: 0.5;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.35rem 0.65rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+            z-index: 10;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 115, 115, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(229, 115, 115, 0); }
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.85rem 1.5rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .btn:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover { background: var(--color-primary-deep); transform: translateY(-2px); }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text-body);
+            border-color: var(--color-border);
+        }
+        .btn-outline:hover { background: var(--color-background); border-color: var(--color-text-muted); }
+        
+        .btn-danger {
+            background: var(--color-accent);
+            color: white;
+        }
+        .btn-danger:hover { background: #d32f2f; transform: translateY(-2px); }
+
+
+        /* --- Right Column: Output & Edit --- */
+        .output-column {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .polaroid-frame {
+            background: var(--color-surface);
+            padding: 16px 16px 60px 16px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
+            transform: rotate(-2.5deg);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .polaroid-frame:hover {
+            transform: rotate(0deg) translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+
+        .polaroid-photo {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #F0EDE6;
+            position: relative;
+        }
+
+        .polaroid-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .polaroid-decoration {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            z-index: 10;
+        }
+
+        .polaroid-text {
+            text-align: center;
+            font-family: var(--font-handwriting);
+            font-size: 1.8rem;
+            color: var(--color-text-body);
+            min-height: 2rem;
+            margin-top: 1rem;
+            line-height: 1.2;
+        }
+
+        .polaroid-date {
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: transparent;
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-lg);
+        }
+
+        .empty-state-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.7; }
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-text-heading);
+            margin-bottom: 0.5rem;
+        }
+        .empty-state p { color: var(--color-text-muted); font-size: 1rem; }
+
+        /* --- Customization Tabs --- */
+        #customizationCard {
+            margin-top: 2.5rem;
+            padding: 1rem;
+        }
+
+        .tab-menu {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background: var(--color-background);
+            border-radius: var(--radius-md);
+            padding: 0.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.75rem 0.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s;
+        }
+        .tab-btn:hover { color: var(--color-text-body); }
+        .tab-btn.active {
+            color: var(--color-text-heading);
+            background: var(--color-surface);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 0.75rem 0.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .option-btn:hover { border-color: var(--color-primary); background: #FAF7F5; }
+        .option-btn.active {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.05);
+        }
+        .option-btn.active .option-name {
+            color: white;
+        }
+        .option-icon { font-size: 1.5rem; line-height: 1; }
+        .option-name {
+            font-size: 0.75rem;
+            color: var(--color-text-body);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            transition: color 0.2s;
+        }
+        .filter-preview {
+            width: 100%;
+            height: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin: 0 auto 0.5rem auto;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .color-btn {
+            width: 100%;
+            height: 2.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .color-btn:hover { border-color: var(--color-primary); }
+        .color-btn.active {
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: var(--color-background);
+            transition: all 0.2s;
+        }
+        .input-field::placeholder { color: var(--color-text-muted); }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: var(--color-surface);
+            box-shadow: 0 0 0 3px rgba(195, 153, 116, 0.2);
+        }
+
+        .label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-heading);
+            margin-bottom: 0.75rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section:last-child { margin-bottom: 0; }
+
+        .final-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Polaroid Booth</h1>
+            <p>Capture the moment. Create timeless, vintage-style photos instantly from your camera or uploads.</p>
+        </header>
+
+        <div class="main-grid">
+            
+            <div class="input-column">
+                <div class="card">
+                    <div class="video-container">
+                        <div id="liveBadge" class="live-badge hidden">Live</div>
+                        <video id="videoElement" autoplay playsinline muted class="hidden"></video>
+                        <div id="videoPlaceholder" class="video-placeholder">
+                            <div class="video-placeholder-icon">📷</div>
+                            <div>Your camera feed will appear here</div>
+                        </div>
+                    </div>
+                    <div class="controls-grid" id="cameraControls">
+                        <button class="btn btn-primary" id="startCameraBtn" style="grid-column: 1 / -1;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                            Start Camera
+                        </button>
+                        <button class="btn btn-outline" id="uploadBtn" style="grid-column: 1 / -1;">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            Upload Photo
+                        </button>
+                    </div>
+    
+                    <div class="controls-grid hidden" id="photoControls">
+                        <button class="btn btn-primary" id="captureBtn">
+                            📸 Capture Photo
+                        </button>
+                        <button class="btn btn-danger" id="stopCameraBtn">
+                            ⏹️ Stop Camera
+                        </button>
+                    </div>
+                </div>
+
+
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+            </div>
+
+            <div class="output-column">
+                
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-state-icon">🖼️</div>
+                    <h3>Your Polaroid Preview</h3>
+                    <p>Start your camera or upload a photo to begin customizing.</p>
+                </div>
+                
+                <div id="polaroidPreview" class="hidden">
+                    <!-- Polaroid will be rendered here by JS -->
+                </div>
+
+                <div class="card hidden" id="customizationCard">
+                    <div class="tab-menu">
+                        <button class="tab-btn active" onclick="showTab(event, 'filters')">🎨 Filters</button>
+                        <button class="tab-btn" onclick="showTab(event, 'style')">✨ Style</button>
+                        <button class="tab-btn" onclick="showTab(event, 'text')">✏️ Text</button>
+                    </div>
+
+                    <div id="tab-filters" class="tab-pane active">
+                        <label class="label">Choose a Vintage Filter</label>
+                        <div class="option-grid" id="filterOptions"></div>
+                    </div>
+
+                    <div id="tab-style" class="tab-pane">
+                        <div class="section">
+                            <label class="label">Decorations</label>
+                            <div class="option-grid" id="decorationOptions"></div>
+                        </div>
+                        <div class="section">
+                            <label class="label">Frame Color</label>
+                            <div class="option-grid" id="colorOptions"></div>
+                        </div>
+                    </div>
+
+                    <div id="tab-text" class="tab-pane">
+                        <label class="label">Add a message (optional)</label>
+                        <input type="text" id="customText" class="input-field" placeholder="A moment in time..." maxlength="40">
+                    </div>
+
+                    <div class="final-actions">
+                        <button class="btn btn-outline" id="clearBtn">
+                            🔄 Clear
+                        </button>
+                        <button class="btn btn-primary" id="downloadBtn">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" class="hidden"></canvas>
+
+    <script>
+        // State
+        let stream = null;
+        let capturedPhoto = null;
+        let isCamera = false;
+        let selectedFilter = 'vintage';
+        let selectedDecoration = 'none';
+        let frameColor = '#FFFFFF';
+
+        // DOM Elements
+        const video = document.getElementById('videoElement');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const liveBadge = document.getElementById('liveBadge');
+        const cameraControls = document.getElementById('cameraControls');
+        const photoControls = document.getElementById('photoControls');
+        const startCameraBtn = document.getElementById('startCameraBtn');
+        const stopCameraBtn = document.getElementById('stopCameraBtn');
+        const captureBtn = document.getElementById('captureBtn');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const fileInput = document.getElementById('fileInput');
+        const emptyState = document.getElementById('emptyState');
+        const polaroidPreview = document.getElementById('polaroidPreview');
+        const customizationCard = document.getElementById('customizationCard');
+        const customTextEl = document.getElementById('customText');
+        const clearBtn = document.getElementById('clearBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const canvas = document.getElementById('canvas');
+
+        // Configuration
+        const filters = [
+            { id: 'vintage', name: 'Vintage', style: 'sepia(0.4) contrast(1.1) brightness(1.1) saturate(1.2)' },
+            { id: 'classic', name: 'Classic', style: 'sepia(0.2) contrast(1.1) brightness(1.05)' },
+            { id: 'mono', name: 'B&W', style: 'grayscale(1) contrast(1.2)' },
+            { id: 'warm', name: 'Warm', style: 'sepia(0.3) saturate(1.4) brightness(1.1)' },
+            { id: 'retro', name: 'Retro', style: 'sepia(0.6) contrast(0.9) brightness(1.1)' },
+            { id: 'dreamy', name: 'Dreamy', style: 'saturate(1.4) contrast(0.9) brightness(1.1)' }
+        ];
+        const decorations = [
+            { id: 'none', name: 'None', icon: '❌' },
+            { id: 'hearts', name: 'Hearts', icon: '💕' },
+            { id: 'stars', name: 'Stars', icon: '⭐' },
+            { id: 'flowers', name: 'Flowers', icon: '🌸' },
+            { id: 'sparkles', name: 'Sparkles', icon: '✨' },
+            { id: 'camera', name: 'Camera', icon: '📷' }
+        ];
+        const frameColors = [
+            { id: '#FFFFFF', name: 'Classic White' },
+            { id: '#F8F6F0', name: 'Cream' },
+            { id: '#F0EDE6', name: 'Beige' },
+            { id: '#FFE4E1', name: 'Blush' },
+            { id: '#E6F3FF', name: 'Sky Blue' },
+            { id: '#FFF5E6', name: 'Warm White' }
+        ];
+
+        // --- Initialization ---
+        
+        function initializeOptions() {
+            // Filters
+            const filterContainer = document.getElementById('filterOptions');
+            filterContainer.innerHTML = ''; // Clear existing
+            filters.forEach(filter => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn' + (filter.id === selectedFilter ? ' active' : '');
+                btn.innerHTML = `<div class="filter-preview" style="filter: ${filter.style}"></div><div class="option-name">${filter.name}</div>`;
+                btn.onclick = () => selectFilter(filter.id, btn);
+                filterContainer.appendChild(btn);
+            });
+
+            // Decorations
+            const decorationContainer = document.getElementById('decorationOptions');
+            decorationContainer.innerHTML = ''; // Clear existing
+            decorations.forEach(decoration => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn' + (decoration.id === selectedDecoration ? ' active' : '');
+                btn.innerHTML = `<div class="option-icon">${decoration.icon}</div><div class="option-name">${decoration.name}</div>`;
+                btn.onclick = () => selectDecoration(decoration.id, btn);
+                decorationContainer.appendChild(btn);
+            });
+
+            // Colors
+            const colorContainer = document.getElementById('colorOptions');
+            colorContainer.innerHTML = ''; // Clear existing
+            frameColors.forEach(color => {
+                const btn = document.createElement('button');
+                btn.className = 'color-btn' + (color.id === frameColor ? ' active' : '');
+                btn.style.backgroundColor = color.id;
+                btn.title = color.name;
+                btn.onclick = () => selectColor(color.id, btn);
+                colorContainer.appendChild(btn);
+            });
+        }
+        
+        // --- Tab Navigation ---
+
+        function showTab(event, tabId) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // --- Option Selection ---
+
+        function selectFilter(id, element) {
+            selectedFilter = id;
+            document.querySelectorAll('#filterOptions .option-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            renderPreview();
+        }
+
+        function selectDecoration(id, element) {
+            selectedDecoration = id;
+            document.querySelectorAll('#decorationOptions .option-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            renderPreview();
+        }
+
+        function selectColor(id, element) {
+            frameColor = id;
+            document.querySelectorAll('#colorOptions .color-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            renderPreview();
+        }
+        
+        // --- Camera Functions ---
+        
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user', width: { ideal: 1024 }, height: { ideal: 1024 } },
+                    audio: false
+                });
+                
+                video.srcObject = stream;
+                video.classList.remove('hidden');
+                videoPlaceholder.classList.add('hidden');
+                liveBadge.classList.remove('hidden');
+                
+                cameraControls.classList.add('hidden');
+                photoControls.classList.remove('hidden');
+                isCamera = true;
+                
+            } catch (error) {
+                console.error('Camera error:', error);
+                alert('Unable to access camera. Please check permissions.');
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+            video.srcObject = null;
+            video.classList.add('hidden');
+            videoPlaceholder.classList.remove('hidden');
+            liveBadge.classList.add('hidden');
+            
+            cameraControls.classList.remove('hidden');
+            photoControls.classList.add('hidden');
+            isCamera = false;
+        }
+
+        function capturePhoto() {
+            if (!isCamera) return;
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            ctx.save();
+            ctx.scale(-1, 1);
+            ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+            ctx.restore();
+            
+            capturedPhoto = canvas.toDataURL('image/jpeg', 0.9);
+            
+            renderPreview();
+            showOutputUI();
+        }
+        
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    capturedPhoto = e.target.result;
+                    renderPreview();
+                    showOutputUI();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // --- UI State & Rendering ---
+        
+        function showOutputUI() {
+            emptyState.classList.add('hidden');
+            polaroidPreview.classList.remove('hidden');
+            customizationCard.classList.remove('hidden');
+        }
+        
+        function hideOutputUI() {
+            capturedPhoto = null;
+            polaroidPreview.classList.add('hidden');
+            customizationCard.classList.add('hidden');
+            emptyState.classList.remove('hidden');
+            customTextEl.value = '';
+            selectFilter('vintage', document.querySelector('#filterOptions .option-btn'));
+        }
+
+        function renderPreview() {
+            if (!capturedPhoto) return;
+            
+            const filter = filters.find(f => f.id === selectedFilter);
+            const decoration = decorations.find(d => d.id === selectedDecoration);
+            const customText = customTextEl.value;
+            
+            polaroidPreview.innerHTML = `
+                <div class="polaroid-frame" style="background: ${frameColor}">
+                    <div class="polaroid-photo">
+                        <img src="${capturedPhoto}" style="filter: ${filter.style}" alt="Polaroid Photo">
+                        ${decoration && decoration.id !== 'none' ? `<div class="polaroid-decoration">${decoration.icon}</div>` : ''}
+                    </div>
+                    <div class="polaroid-text">${customText || ''}</div>
+                    <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                </div>
+            `;
+        }
+
+        // --- Final Download ---
+        
+        async function downloadPolaroid() {
+            if (!capturedPhoto) return;
+
+            const dlCanvas = document.createElement('canvas');
+            const ctx = dlCanvas.getContext('2d');
+            const scale = 3;
+            const baseWidth = 350;
+            const baseHeight = 420;
+            
+            dlCanvas.width = baseWidth * scale;
+            dlCanvas.height = baseHeight * scale;
+            ctx.scale(scale, scale);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            // Frame background
+            ctx.fillStyle = frameColor;
+            ctx.fillRect(0, 0, baseWidth, baseHeight);
+            
+            // Photo area
+            const photoPadding = 16;
+            const photoSize = baseWidth - (photoPadding * 2);
+            const photoY = photoPadding;
+
+            const img = new Image();
+            img.onload = () => {
+                const filter = filters.find(f => f.id === selectedFilter);
+                ctx.filter = filter.style;
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(photoPadding, photoY, photoSize, photoSize);
+                ctx.clip();
+                
+                const sAspect = img.width / img.height;
+                const dAspect = 1.0;
+                let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
+
+                if (sAspect > dAspect) {
+                    sHeight = img.height;
+                    sWidth = img.height * dAspect;
+                    sx = (img.width - sWidth) / 2;
+                } else {
+                    sWidth = img.width;
+                    sHeight = img.width / dAspect;
+                    sy = (img.height - sHeight) / 2;
+                }
+                
+                ctx.drawImage(img, sx, sy, sWidth, sHeight, photoPadding, photoY, photoSize, photoSize);
+                ctx.restore();
+                ctx.filter = 'none';
+
+                // Decoration
+                const decoration = decorations.find(d => d.id === selectedDecoration);
+                if (decoration && decoration.id !== 'none') {
+                    ctx.font = '28px serif';
+                    ctx.textAlign = 'right';
+                    ctx.fillText(decoration.icon, baseWidth - (photoPadding + 10), photoY + 32);
+                }
+
+                // Custom text
+                const customText = customTextEl.value;
+                if (customText.trim()) {
+                    ctx.font = `600 ${1.8 * 16}px ${getComputedStyle(document.documentElement).getPropertyValue('--font-handwriting').trim()}`;
+                    ctx.fillStyle = 'var(--color-text-body)';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(customText, baseWidth / 2, baseHeight - 50, baseWidth - 40);
+                }
+                
+                // Date
+                ctx.font = '12px monospace';
+                ctx.fillStyle = 'var(--color-text-muted)';
+                ctx.globalAlpha = 0.8;
+                ctx.textAlign = 'center';
+                ctx.fillText(new Date().toLocaleDateString(), baseWidth / 2, baseHeight - 25);
+
+                // Download
+                const link = document.createElement('a');
+                link.download = `polaroid-${Date.now()}.png`;
+                link.href = dlCanvas.toDataURL('image/png');
+                link.click();
+            };
+            img.src = capturedPhoto;
+        }
+
+        // --- Event Listeners ---
+        startCameraBtn.addEventListener('click', startCamera);
+        stopCameraBtn.addEventListener('click', stopCamera);
+        captureBtn.addEventListener('click', capturePhoto);
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileUpload);
+        clearBtn.addEventListener('click', hideOutputUI);
+        downloadBtn.addEventListener('click', downloadPolaroid);
+        customTextEl.addEventListener('input', () => {
+            if (capturedPhoto) renderPreview();
+        });
+
+        // Initialize
+        initializeOptions();
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>
