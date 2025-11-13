@@ -1,249 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Polaroid Booth | Free Online Polaroid Camera & Photo Editor</title>
-    <meta name="description" content="Learn about Polaroid Booth - a free online polaroid camera and vintage photo editor. Create instant retro photos with our easy-to-use web application. No downloads required.">
-    <meta name="keywords" content="about polaroid booth, vintage photo editor, online camera app, free photo editor, polaroid creator">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://polaroidbooth.com/about.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>About - Polaroid Booth</title>
+    <meta name="description" content="Learn about Polaroid Booth - your free online polaroid camera and photo editor.">
+    <meta name="robots" content="noindex, nofollow">
     
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://polaroidbooth.com/about.html">
-    <meta property="og:title" content="About Polaroid Booth - Free Online Polaroid Camera">
-    <meta property="og:description" content="Learn about Polaroid Booth and how we bring vintage polaroid photography to the digital age.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:url" content="https://polaroidbooth.com/about.html">
-    <meta property="twitter:title" content="About Polaroid Booth">
-    <meta property="twitter:description" content="Learn about Polaroid Booth - free online polaroid camera and photo editor.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --color-background: #F8F5F2;
             --color-surface: #FFFFFF;
-            --color-primary: #C39974;
-            --color-text-heading: #3D352E;
-            --color-text-body: #594F48;
-            --color-text-muted: #8E8178;
-            --color-border: #EAE3DC;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Poppins', sans-serif;
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --radius-lg: 16px;
+            --color-border: #333333;
+            --color-text-main: #333333;
+            --color-text-muted: #666666;
+            --color-accent: #E57373;
+            --font-doodle: 'Patrick Hand', cursive;
+            --radius-sketch: 8px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-doodle);
             background-color: var(--color-background);
-            color: var(--color-text-body);
+            color: var(--color-text-main);
+            min-height: 100vh;
+            padding: 2rem;
             line-height: 1.6;
         }
+
         .nav {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 0;
-            box-shadow: var(--shadow-md);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .nav-brand {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--color-text-heading);
-            text-decoration: none;
-            font-weight: 700;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--color-text-body);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--color-primary); }
-        .container {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-        }
-        .page-header {
-            text-align: center;
             margin-bottom: 3rem;
         }
-        .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-text-heading);
-            margin-bottom: 1rem;
+
+        .nav-brand {
+            font-family: var(--font-doodle);
+            font-size: 3rem;
+            color: var(--color-text-main);
+            text-decoration: none;
+            border: 4px solid var(--color-border);
+            padding: 0.5rem 2rem;
+            background: var(--color-surface);
+            box-shadow: 8px 8px 0px var(--color-text-main);
+            border-radius: var(--radius-sketch);
+            transform: rotate(-1.5deg);
         }
-        .page-header p {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
+
         .card {
             background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            padding: 2rem;
+            box-shadow: 4px 4px 0px var(--color-text-main);
             margin-bottom: 2rem;
         }
-        .card h2 {
-            font-family: var(--font-heading);
-            color: var(--color-text-heading);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        .card h3 {
-            font-family: var(--font-heading);
-            color: var(--color-text-heading);
-            margin: 1.5rem 0 0.75rem;
-            font-size: 1.3rem;
-        }
-        .card p {
-            margin-bottom: 1rem;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .feature-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--color-background);
-            border-radius: var(--radius-lg);
-        }
-        .feature-icon {
+
+        h1 {
             font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Caveat', cursive;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            font-family: 'Caveat', cursive;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
-        .feature-item h4 {
-            font-weight: 600;
-            color: var(--color-text-heading);
-            margin-bottom: 0.5rem;
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 1.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-family: var(--font-doodle);
+            font-size: 1.2rem;
+            background: var(--color-text-main);
+            color: var(--color-surface);
+            text-decoration: none;
+            box-shadow: 2px 2px 0px var(--color-text-main);
+            transition: all 0.2s;
+            margin-top: 1rem;
         }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
         .footer {
-            background: var(--color-surface);
-            border-top: 1px solid var(--color-border);
             margin-top: 4rem;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             text-align: center;
             color: var(--color-text-muted);
+            font-size: 0.9rem;
         }
-        .footer a {
-            color: var(--color-primary);
-            text-decoration: none;
+
+        .footer-bottom {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--color-border);
         }
+
+        .footer-bottom a {
+            color: var(--color-text-main);
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            .nav-links { gap: 1rem; font-size: 0.9rem; }
-            .page-header h1 { font-size: 2rem; }
+            body { padding: 1rem; }
+            .nav-brand { font-size: 2rem; padding: 0.3rem 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            p, li { font-size: 1rem; }
         }
     </style>
 </head>
+
 <body>
     <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-brand">📷 Polaroid Booth</a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/privacy.html">Privacy</a></li>
-            </ul>
-        </div>
+        <a href="/test.html" class="nav-brand">Polaroid Booth</a>
     </nav>
 
     <div class="container">
-        <div class="page-header">
-            <h1>About Polaroid Booth</h1>
-            <p>Your free online polaroid camera and vintage photo editor</p>
-        </div>
-
         <div class="card">
-            <h2>What is Polaroid Booth?</h2>
-            <p>Polaroid Booth is a free, web-based application that brings the nostalgic charm of instant polaroid cameras to the digital age. Create stunning vintage-style photos directly in your browser - no downloads, no installations, no hassle.</p>
+            <h1>About Polaroid Booth 📸</h1>
             
-            <p>Whether you're capturing moments with your webcam or uploading existing photos, Polaroid Booth transforms them into beautiful, retro polaroid-style images complete with customizable filters, effects, and handwritten-style text.</p>
+            <p>Welcome to Polaroid Booth - your free online polaroid camera and vintage photo editor! We're all about bringing back the magic of instant photography with a modern twist.</p>
 
-            <h3>Key Features</h3>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">📸</div>
-                    <h4>Instant Capture</h4>
-                    <p>Use your webcam to take photos with a countdown timer</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🖼️</div>
-                    <h4>Upload Photos</h4>
-                    <p>Transform existing photos into polaroid masterpieces</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🎨</div>
-                    <h4>12+ Filters</h4>
-                    <p>Vintage, retro, B&W, and more artistic filters</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✏️</div>
-                    <h4>Custom Text</h4>
-                    <p>Add personalized messages with handwritten fonts</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚙️</div>
-                    <h4>Fine-tune</h4>
-                    <p>Adjust brightness, contrast, saturation, and more</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💾</div>
-                    <h4>Download</h4>
-                    <p>Save high-quality polaroid images instantly</p>
-                </div>
-            </div>
+            <h2>What We Do</h2>
+            <p>Polaroid Booth lets you create stunning vintage-style polaroid photos right in your browser. Whether you're using your camera or uploading existing photos, we make it easy to add that nostalgic polaroid touch to your memories.</p>
 
-            <h3>Why Polaroid Booth?</h3>
-            <p><strong>100% Free:</strong> No subscriptions, no hidden fees, no watermarks.</p>
-            <p><strong>Privacy First:</strong> All processing happens in your browser. Your photos never leave your device.</p>
-            <p><strong>No Installation:</strong> Works directly in your web browser on any device.</p>
-            <p><strong>Easy to Use:</strong> Intuitive interface designed for everyone.</p>
+            <h2>Features</h2>
+            <ul>
+                <li>📷 Instant camera capture with countdown timer</li>
+                <li>🎞️ Multi-photo photostrip mode (4 photos in a grid)</li>
+                <li>🖼️ Upload your own photos</li>
+                <li>🎨 12+ vintage filters (Vintage, Retro, B&W, and more)</li>
+                <li>😊 Fun sticker overlays</li>
+                <li>✏️ Custom text with handwritten fonts</li>
+                <li>⚙️ Brightness, contrast, and saturation controls</li>
+                <li>💾 High-quality downloads</li>
+                <li>🔒 100% private - everything happens in your browser</li>
+                <li>🆓 Completely free, no watermarks</li>
+            </ul>
 
-            <h3>Perfect For</h3>
-            <p>✓ Social media content creators<br>
-            ✓ Memory preservation<br>
-            ✓ Creative projects<br>
-            ✓ Event photography<br>
-            ✓ Scrapbooking<br>
-            ✓ Gift making</p>
-        </div>
+            <h2>Privacy First</h2>
+            <p>Your privacy matters to us. All photo processing happens directly in your browser - your photos never leave your device and are never uploaded to our servers. What happens in Polaroid Booth, stays in Polaroid Booth!</p>
 
-        <div class="card">
-            <h2>About the Developer</h2>
-            <p>Polaroid Booth is developed and maintained by <strong>Sarath Ramesh</strong>, a passionate developer dedicated to creating useful and accessible web applications.</p>
-            <p>Connect on GitHub: <a href="https://github.com/sarathoff" target="_blank" rel="noopener">github.com/sarathoff</a></p>
-            <p>For inquiries: <a href="mailto:sarathramesh.off@zohomail.in">sarathramesh.off@zohomail.in</a></p>
+            <h2>Perfect For</h2>
+            <ul>
+                <li>Social media content creators</li>
+                <li>Event photobooths</li>
+                <li>Creating vintage memories</li>
+                <li>Fun with friends and family</li>
+                <li>Digital scrapbooking</li>
+                <li>Retro-style photography projects</li>
+            </ul>
+
+            <h2>Get Started</h2>
+            <p>Ready to create some amazing polaroid photos? It's super easy - just click the button below and start snapping!</p>
+            
+            <a href="/test.html" class="btn">Start Creating 📸</a>
         </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 Polaroid Booth. Developed by <a href="https://github.com/sarathoff" target="_blank" rel="noopener">Sarath Ramesh</a>. All rights reserved.</p>
+        <div class="footer-bottom">
+            Follow us on Instagram <a href="https://instagram.com/photobooth.co" target="_blank" rel="noopener">@photobooth.co</a> 📸
+        </div>
     </footer>
 </body>
+
 </html>

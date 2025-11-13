@@ -1,210 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Polaroid Booth | Get Support & Send Feedback</title>
-    <meta name="description" content="Get in touch with Polaroid Booth. Contact us for support, feedback, or inquiries about our free online polaroid camera and photo editor. We respond within 24-48 hours.">
-    <meta name="keywords" content="contact polaroid booth, support, feedback, help, customer service">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://polaroidbooth.com/contact.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Contact - Polaroid Booth</title>
+    <meta name="description" content="Get in touch with Polaroid Booth. We'd love to hear from you!">
+    <meta name="robots" content="noindex, nofollow">
     
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://polaroidbooth.com/contact.html">
-    <meta property="og:title" content="Contact Polaroid Booth">
-    <meta property="og:description" content="Get in touch with us for support, feedback, or inquiries.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --color-background: #F8F5F2;
             --color-surface: #FFFFFF;
-            --color-primary: #C39974;
-            --color-primary-deep: #B18965;
-            --color-text-heading: #3D352E;
-            --color-text-body: #594F48;
-            --color-text-muted: #8E8178;
-            --color-border: #EAE3DC;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Poppins', sans-serif;
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --radius-lg: 16px;
+            --color-border: #333333;
+            --color-text-main: #333333;
+            --color-text-muted: #666666;
+            --color-accent: #E57373;
+            --font-doodle: 'Patrick Hand', cursive;
+            --radius-sketch: 8px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-doodle);
             background-color: var(--color-background);
-            color: var(--color-text-body);
+            color: var(--color-text-main);
+            min-height: 100vh;
+            padding: 2rem;
             line-height: 1.6;
         }
+
         .nav {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 0;
-            box-shadow: var(--shadow-md);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .nav-brand {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--color-text-heading);
-            text-decoration: none;
-            font-weight: 700;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--color-text-body);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--color-primary); }
-        .container {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-        }
-        .page-header {
-            text-align: center;
             margin-bottom: 3rem;
         }
-        .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-text-heading);
-            margin-bottom: 1rem;
+
+        .nav-brand {
+            font-family: var(--font-doodle);
+            font-size: 3rem;
+            color: var(--color-text-main);
+            text-decoration: none;
+            border: 4px solid var(--color-border);
+            padding: 0.5rem 2rem;
+            background: var(--color-surface);
+            box-shadow: 8px 8px 0px var(--color-text-main);
+            border-radius: var(--radius-sketch);
+            transform: rotate(-1.5deg);
         }
-        .page-header p {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
+
         .card {
             background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            padding: 2rem;
+            box-shadow: 4px 4px 0px var(--color-text-main);
             margin-bottom: 2rem;
         }
-        .contact-info {
-            display: grid;
-            gap: 2rem;
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Caveat', cursive;
         }
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-        .contact-icon {
+
+        h2 {
             font-size: 2rem;
-            flex-shrink: 0;
+            margin: 2rem 0 1rem;
+            font-family: 'Caveat', cursive;
         }
-        .contact-item h3 {
-            font-family: var(--font-heading);
-            color: var(--color-text-heading);
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method {
+            background: var(--color-background);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .contact-method h3 {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            font-family: 'Caveat', cursive;
         }
-        .contact-item a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .contact-item a:hover {
+
+        .contact-method a {
+            color: var(--color-text-main);
             text-decoration: underline;
+            font-size: 1.2rem;
         }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 1.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-family: var(--font-doodle);
+            font-size: 1.2rem;
+            background: var(--color-text-main);
+            color: var(--color-surface);
+            text-decoration: none;
+            box-shadow: 2px 2px 0px var(--color-text-main);
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
         .footer {
-            background: var(--color-surface);
-            border-top: 1px solid var(--color-border);
             margin-top: 4rem;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             text-align: center;
             color: var(--color-text-muted);
+            font-size: 0.9rem;
         }
-        .footer a {
-            color: var(--color-primary);
-            text-decoration: none;
+
+        .footer-bottom {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--color-border);
         }
+
+        .footer-bottom a {
+            color: var(--color-text-main);
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            .nav-links { gap: 1rem; font-size: 0.9rem; }
-            .page-header h1 { font-size: 2rem; }
+            body { padding: 1rem; }
+            .nav-brand { font-size: 2rem; padding: 0.3rem 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
         }
     </style>
 </head>
+
 <body>
     <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-brand">📷 Polaroid Booth</a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/privacy.html">Privacy</a></li>
-            </ul>
-        </div>
+        <a href="/test.html" class="nav-brand">Polaroid Booth</a>
     </nav>
 
     <div class="container">
-        <div class="page-header">
-            <h1>Contact Us</h1>
-            <p>Have questions or feedback? We'd love to hear from you!</p>
-        </div>
-
         <div class="card">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div>
-                        <h3>Email</h3>
-                        <p>For support, feedback, or inquiries:</p>
-                        <a href="mailto:sarathramesh.off@zohomail.in">sarathramesh.off@zohomail.in</a>
-                    </div>
-                </div>
+            <h1>Get in Touch! 💌</h1>
+            
+            <p>We'd love to hear from you! Whether you have questions, feedback, or just want to say hi, feel free to reach out.</p>
 
-                <div class="contact-item">
-                    <div class="contact-icon">💻</div>
-                    <div>
-                        <h3>Developer</h3>
-                        <p>Connect with the developer on GitHub:</p>
-                        <a href="https://github.com/sarathoff" target="_blank" rel="noopener">github.com/sarathoff</a>
-                    </div>
-                </div>
+            <h2>Connect With Us</h2>
 
-                <div class="contact-item">
-                    <div class="contact-icon">🐛</div>
-                    <div>
-                        <h3>Report Issues</h3>
-                        <p>Found a bug or have a feature request? Let us know via email or GitHub.</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">⏱️</div>
-                    <div>
-                        <h3>Response Time</h3>
-                        <p>We typically respond within 24-48 hours during business days.</p>
-                    </div>
-                </div>
+            <div class="contact-method">
+                <h3>📸 Instagram</h3>
+                <p>Follow us and DM us on Instagram!</p>
+                <a href="https://instagram.com/photobooth.co" target="_blank" rel="noopener">@photobooth.co</a>
             </div>
+
+            <div class="contact-method">
+                <h3>💬 Feedback</h3>
+                <p>Have suggestions or found a bug? We're always looking to improve Polaroid Booth. Send us your thoughts!</p>
+            </div>
+
+            <div class="contact-method">
+                <h3>🤝 Partnerships</h3>
+                <p>Interested in collaborating or featuring Polaroid Booth at your event? Let's talk!</p>
+            </div>
+
+            <h2>Quick Links</h2>
+            <p>Looking for something specific?</p>
+            <ul style="margin-left: 2rem; font-size: 1.1rem;">
+                <li><a href="/test.html" style="color: var(--color-text-main);">Home - Start Creating</a></li>
+                <li><a href="/about-test.html" style="color: var(--color-text-main);">About Us</a></li>
+                <li><a href="/privacy-test.html" style="color: var(--color-text-main);">Privacy Policy</a></li>
+                <li><a href="/terms-test.html" style="color: var(--color-text-main);">Terms of Service</a></li>
+            </ul>
+
+            <a href="/test.html" class="btn">Back to Polaroid Booth 📸</a>
         </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 Polaroid Booth. Developed by <a href="https://github.com/sarathoff" target="_blank" rel="noopener">Sarath Ramesh</a>. All rights reserved.</p>
+        <div class="footer-bottom">
+            Follow us on Instagram <a href="https://instagram.com/photobooth.co" target="_blank" rel="noopener">@photobooth.co</a> 📸
+        </div>
     </footer>
 </body>
+
 </html>

@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5GM0GFGRK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R5GM0GFGRK');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -9,10 +18,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Primary Meta Tags -->
-    <title>Polaroid Booth - Instant Photos & Fun</title>
-    <meta name="title" content="Polaroid Booth - Instant Photos & Fun">
+    <title>Polaroid Booth - Free Online Polaroid Camera</title>
+    <meta name="title" content="Polaroid Booth - Free Online Polaroid Camera">
     <meta name="description"
-        content="Create fun polaroid photostrips online for free. Instant polaroid camera booth with filters, stickers, and customization.">
+        content="Free online polaroid camera and vintage photo editor. Create instant polaroid-style photos with filters, stickers, and customization. No download required.">
     <meta name="author" content="Sarath Ramesh">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://polaroidbooth.com/">
@@ -26,28 +35,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@700&family=Dancing+Script:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Indie+Flower&family=Architects+Daughter&family=Permanent+Marker&family=Shadows+Into+Light&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --color-background: #F8F5F2;
-            /* Light beige */
+            --color-background: #F0F2F5;
+            /* Light grey */
             --color-surface: #FFFFFF;
             /* White */
-            --color-border: #333333;
-            /* Darker grey for borders */
-            --color-text-main: #333333;
-            /* Black/Dark Grey */
-            --color-text-muted: #666666;
-            /* Medium Grey */
-            --color-accent: #E57373;
-            /* Red for danger/active */
-            --font-doodle: 'Patrick Hand', cursive;
-            /* Main doodle font */
+            --color-border: #E0E0E0;
+            /* Softer grey for borders */
+            --color-text-main: #212529;
+            /* Dark grey */
+            --color-text-muted: #6C757D;
+            /* Medium grey */
+            --color-accent: #007BFF;
+            /* Professional blue */
+            --font-main: 'Patrick Hand', sans-serif;
+            /* Main font */
             --font-monospace: monospace;
             /* For dates */
-            --radius-sketch: 8px;
-            /* Slightly rounded, like a sketch */
+            --radius-main: 12px;
+            /* Rounded corners */
+            --shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
         }
 
         * {
@@ -57,7 +68,7 @@
         }
 
         body {
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
             background-color: var(--color-background);
             color: var(--color-text-main);
             min-height: 100vh;
@@ -81,7 +92,6 @@
             text-align: center;
             margin-bottom: 3rem;
             display: none;
-            /* Hide header text as per inspiration */
         }
 
         .main-grid {
@@ -90,47 +100,36 @@
             gap: 2rem;
             width: 100%;
             max-width: 1000px;
-            /* Adjust max-width for overall content */
             margin: 0 auto;
             justify-content: center;
             align-items: flex-start;
-            /* Align items to the top */
         }
 
         @media (min-width: 992px) {
             .main-grid {
                 grid-template-columns: 400px 1fr;
-                /* Fixed width for input, flexible for output */
                 gap: 4rem;
             }
         }
 
         .card {
             background: var(--color-surface);
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-sketch);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-main);
             padding: 1.5rem;
-            box-shadow: 4px 4px 0px var(--color-text-main);
-            /* Sketchy shadow */
+            box-shadow: var(--shadow-main);
             position: relative;
             z-index: 1;
-            /* Ensure card is above background doodles */
-        }
-
-        /* --- Left Column: Input (Camera/Upload) --- */
-        .input-column {
-            position: relative;
         }
 
         .video-container {
             position: relative;
             aspect-ratio: 1/1;
             background: #EAE3DC;
-            /* Light grey for placeholder */
-            border-radius: var(--radius-sketch);
+            border-radius: var(--radius-main);
             overflow: hidden;
-            border: 4px solid var(--color-border);
-            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--color-border);
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
             margin-bottom: 1.5rem;
         }
 
@@ -139,7 +138,6 @@
             height: 100%;
             object-fit: cover;
             transform: scaleX(-1);
-            /* Mirror camera */
             display: block;
         }
 
@@ -179,8 +177,7 @@
             color: white;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             animation: countdownPulse 1s ease-in-out;
-            font-family: var(--font-doodle);
-            /* Use doodle font for countdown */
+            font-family: var(--font-main);
         }
 
         @keyframes countdownPulse {
@@ -207,11 +204,10 @@
 
         .btn {
             padding: 0.85rem 1.5rem;
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-sketch);
-            font-family: var(--font-doodle);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-main);
+            font-family: var(--font-main);
             font-size: 1.2rem;
-            /* Larger font for doodle style */
             font-weight: 400;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -222,106 +218,76 @@
             width: 100%;
             background: var(--color-surface);
             color: var(--color-text-main);
-            box-shadow: 2px 2px 0px var(--color-text-main);
-            /* Sketchy shadow */
+            box-shadow: var(--shadow-main);
         }
 
         .btn:hover {
-            transform: translate(2px, 2px);
-            /* Simulate button press */
-            box-shadow: none;
-            background: var(--color-background);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
         }
 
         .btn:focus-visible {
-            outline: 2px dashed var(--color-border);
-            /* Dashed outline */
+            outline: 2px solid var(--color-accent);
             outline-offset: 4px;
         }
 
         .btn-primary {
-            background: var(--color-text-main);
-            /* Dark background for primary */
+            background: var(--color-accent);
             color: var(--color-surface);
-            /* White text */
-            box-shadow: 2px 2px 0px var(--color-text-main);
-            /* Match card shadow */
-        }
-
-        .btn-primary:hover {
-            background: var(--color-text-main);
-            color: var(--color-surface);
-            transform: translate(2px, 2px);
-            box-shadow: none;
         }
 
         .btn-primary:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
-            box-shadow: 2px 2px 0px var(--color-text-main);
+            box-shadow: var(--shadow-main);
         }
 
         .btn-outline {
-            background: var(--color-surface);
-            color: var(--color-text-main);
+            background: transparent;
+            border-color: var(--color-accent);
+            color: var(--color-accent);
         }
 
         .btn-danger {
-            background: var(--color-accent);
+            background: #DC3545;
             color: white;
-            border-color: var(--color-accent);
-            box-shadow: 2px 2px 0px var(--color-text-main);
+            border-color: #DC3545;
         }
 
-        .btn-danger:hover {
-            background: #d32f2f;
-            border-color: #d32f2f;
-            transform: translate(2px, 2px);
-            box-shadow: none;
-        }
-
-
-        /* --- Right Column: Output & Edit --- */
         .output-column {
             position: relative;
-            /* Allow for absolute positioning of doodles */
             display: flex;
             flex-direction: column;
             gap: 2rem;
             align-items: center;
-            /* Center polaroid and customization */
         }
 
         .polaroid-frame {
             background: var(--color-surface);
             padding: 16px 16px 60px 16px;
-            border-radius: var(--radius-sketch);
-            box-shadow: 6px 6px 0px var(--color-text-main);
-            /* Stronger shadow for polaroid */
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-main);
             max-width: 350px;
             width: 100%;
             position: relative;
             transform: rotate(-2.5deg);
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 2px solid var(--color-border);
+            border: 1px solid var(--color-border);
             margin-bottom: 2rem;
-            /* Space before customization card */
         }
 
         .polaroid-frame:hover {
             transform: rotate(0deg) translateY(-8px) scale(1.02);
-            box-shadow: 10px 10px 0px var(--color-text-main);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
 
         .polaroid-photo {
             aspect-ratio: 1/1;
             overflow: hidden;
             background: #F0EDE6;
-            /* Light background for photo area */
             position: relative;
             border: 1px solid var(--color-border);
-            /* Inner border for photo */
         }
 
         .polaroid-photo img {
@@ -339,8 +305,7 @@
             line-height: 1.2;
             padding: 0 0.5rem;
             word-wrap: break-word;
-            font-family: var(--font-doodle);
-            /* Ensure doodle font */
+            font-family: var(--font-main);
         }
 
         .polaroid-date {
@@ -357,10 +322,9 @@
             padding: 3rem 2rem;
             background: transparent;
             border: 2px dashed var(--color-border);
-            /* Dashed border for empty state */
-            border-radius: var(--radius-sketch);
+            border-radius: var(--radius-main);
             color: var(--color-text-muted);
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
             font-size: 1.2rem;
         }
 
@@ -370,32 +334,17 @@
             opacity: 0.7;
         }
 
-        .empty-state h3 {
-            font-family: var(--font-doodle);
-            font-size: 1.8rem;
-            color: var(--color-text-main);
-            margin-bottom: 0.5rem;
-        }
-
-        .empty-state p {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* --- Customization Tabs --- */
         #customizationCard {
             width: 100%;
             max-width: 450px;
-            /* Limit width of customization card */
             margin: 0 auto;
-            /* Center it */
         }
 
         .tab-menu {
             display: flex;
             margin-bottom: 1.5rem;
             background: var(--color-background);
-            border-radius: var(--radius-sketch);
+            border-radius: var(--radius-main);
             padding: 0.5rem;
             border: 1px solid var(--color-border);
         }
@@ -406,24 +355,23 @@
             border: none;
             background: none;
             cursor: pointer;
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
             font-size: 1.1rem;
             font-weight: 400;
             color: var(--color-text-muted);
-            border-radius: var(--radius-sketch);
+            border-radius: var(--radius-main);
             transition: all 0.3s;
         }
 
         .tab-btn:hover {
             color: var(--color-text-main);
             background: rgba(0, 0, 0, 0.05);
-            /* Light hover effect */
         }
 
         .tab-btn.active {
             color: var(--color-text-main);
             background: var(--color-surface);
-            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--color-border);
         }
 
@@ -457,69 +405,47 @@
 
         .option-btn {
             padding: 0.75rem 0.5rem;
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-sketch);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-main);
             background: transparent;
             cursor: pointer;
             transition: all 0.2s;
             text-align: center;
             font-size: 1rem;
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
             color: var(--color-text-main);
-            box-shadow: 2px 2px 0px var(--color-text-main);
+            box-shadow: var(--shadow-main);
         }
 
         .option-btn:hover {
-            transform: translate(2px, 2px);
-            box-shadow: none;
-            background: var(--color-background);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
         }
 
         .option-btn.active {
-            border-color: var(--color-text-main);
-            background: var(--color-text-main);
+            border-color: var(--color-accent);
+            background: var(--color-accent);
             color: white;
             transform: none;
-            /* No transform when active */
             box-shadow: none;
-        }
-
-        .option-btn.active .option-name {
-            color: white;
-        }
-
-        .option-name {
-            font-size: 0.9rem;
-            color: var(--color-text-main);
-            font-weight: 400;
-            margin-top: 0.5rem;
-            transition: color 0.2s;
-            font-family: var(--font-doodle);
         }
 
         .input-field {
             width: 100%;
             padding: 0.75rem;
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-sketch);
-            font-family: var(--font-doodle);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-main);
+            font-family: var(--font-main);
             font-size: 1.1rem;
             background: var(--color-background);
             transition: all 0.2s;
             color: var(--color-text-main);
-            box-shadow: 2px 2px 0px var(--color-text-main);
-        }
-
-        .input-field::placeholder {
-            color: var(--color-text-muted);
-            opacity: 0.8;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: var(--color-text-main);
-            background: var(--color-surface);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
         }
 
         .label {
@@ -528,19 +454,11 @@
             font-weight: 400;
             color: var(--color-text-main);
             margin-bottom: 0.75rem;
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
         }
 
         .section {
             margin-bottom: 2rem;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        .adjustment-control {
-            margin-bottom: 1rem;
         }
 
         .adjustment-control label {
@@ -550,62 +468,37 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
             font-weight: 400;
-            font-family: var(--font-doodle);
-        }
-
-        .adjustment-control .value {
-            font-weight: 400;
-            color: var(--color-text-main);
-            font-family: var(--font-monospace);
-            /* Monospace for values */
+            font-family: var(--font-main);
         }
 
         input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
             height: 8px;
-            /* Thicker slider */
-            background: var(--color-border);
+            background: #ddd;
             border-radius: 5px;
             outline: none;
             opacity: 0.7;
             transition: opacity .2s;
         }
 
-        input[type="range"]:hover {
-            opacity: 1;
-        }
-
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
             width: 22px;
-            /* Larger thumb */
             height: 22px;
-            background: var(--color-text-main);
+            background: var(--color-accent);
             cursor: pointer;
             border-radius: 50%;
             border: 3px solid var(--color-surface);
-            /* White border around thumb */
-            box-shadow: 1px 1px 0px var(--color-text-main);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
-            background: var(--color-text-main);
-            cursor: pointer;
-            border-radius: 50%;
-            border: 3px solid var(--color-surface);
-            box-shadow: 1px 1px 0px var(--color-text-main);
-        }
-
 
         .final-actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            border-top: 2px solid var(--color-border);
+            border-top: 1px solid var(--color-border);
             padding-top: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -614,7 +507,6 @@
             display: none !important;
         }
 
-        /* Navigation - Reimagined as "Photobooth" title */
         .nav {
             display: flex;
             justify-content: center;
@@ -625,364 +517,38 @@
         }
 
         .nav-brand {
-            font-family: var(--font-doodle);
+            font-family: var(--font-main);
             font-size: 4rem;
-            /* Large, prominent title */
             color: var(--color-text-main);
             text-decoration: none;
             font-weight: 400;
-            /* Doodle fonts often look better lighter */
-            border: 4px solid var(--color-border);
+            border: 2px solid var(--color-border);
             padding: 0.5rem 2rem;
             background: var(--color-surface);
-            box-shadow: 8px 8px 0px var(--color-text-main);
-            border-radius: var(--radius-sketch);
+            box-shadow: var(--shadow-main);
+            border-radius: var(--radius-main);
             transform: rotate(-1.5deg);
-            /* Slightly rotated title */
             position: relative;
         }
 
-        .nav-links {
-            display: none;
-            /* Hide navigation links for this style */
-        }
-
-        /* Footer - Simplified and moved to a small attribution */
         .footer {
             margin-top: 4rem;
             padding: 1.5rem 0;
             text-align: center;
             color: var(--color-text-muted);
             font-size: 0.9rem;
-            font-family: var(--font-doodle);
-        }
-
-        .footer-bottom {
-            padding-top: 1rem;
-            border-top: 1px dashed var(--color-border);
-            /* Dashed separator */
-        }
-
-        .footer-bottom a {
-            color: var(--color-text-main);
-            text-decoration: underline;
-        }
-
-        /* Sticker Styles */
-        .sticker-item {
-            font-size: 2.5rem;
-            cursor: pointer;
-            transition: transform 0.2s;
-            user-select: none;
-            border: 2px solid transparent;
-            /* Placeholder for active state */
-            border-radius: var(--radius-sketch);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sticker-item:hover {
-            transform: scale(1.2);
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .sticker-item:active {
-            transform: scale(0.95);
-        }
-
-        .active-sticker-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            background: var(--color-background);
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-sketch);
-            font-size: 1.5rem;
-            font-family: var(--font-doodle);
-            box-shadow: 2px 2px 0px var(--color-text-main);
-        }
-
-        .remove-sticker-btn {
-            background: var(--color-accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            /* Larger hit area */
-            height: 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-            box-shadow: 1px 1px 0px var(--color-text-main);
-        }
-
-        .remove-sticker-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Multi-Photo Grid */
-        .multi-photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            padding: 8px;
-            background: var(--color-surface);
-            /* Ensure white background */
-        }
-
-        .multi-photo-item {
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            background: #F0EDE6;
-            position: relative;
-            border: 1px solid var(--color-border);
-        }
-
-        .multi-photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .multi-photo-counter {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: var(--font-monospace);
-        }
-
-        /* Sticker Overlay on Photo */
-        .photo-sticker {
-            position: absolute;
-            font-size: 2rem;
-            user-select: none;
-            z-index: 5;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            pointer-events: none;
-            line-height: 1;
-            /* Prevent extra line height from pushing position */
-        }
-
-        /* Doodle Elements (as seen in inspiration) */
-        .doodle-arrow-right {
-            position: absolute;
-            top: 15%;
-            left: -100px;
-            /* Position to the left of the main content */
-            font-size: 5rem;
-            color: var(--color-text-main);
-            transform: rotate(20deg);
-            z-index: 0;
-            font-family: var(--font-doodle);
-            display: none;
-            /* Hidden by default, show on larger screens */
-        }
-
-        .doodle-scissors {
-            position: absolute;
-            bottom: -50px;
-            right: -80px;
-            font-size: 6rem;
-            color: var(--color-text-main);
-            transform: rotate(-15deg);
-            z-index: 0;
-            display: none;
-            /* Hidden by default, show on larger screens */
-        }
-
-        .doodle-tag-me {
-            position: absolute;
-            top: 60%;
-            left: -120px;
-            font-size: 3rem;
-            color: var(--color-text-main);
-            transform: rotate(5deg);
-            z-index: 0;
-            font-family: var(--font-doodle);
-            line-height: 1;
-            display: none;
-            /* Hidden by default, show on larger screens */
-        }
-
-        .doodle-social-icons {
-            position: absolute;
-            top: 70%;
-            left: -120px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 3rem;
-            z-index: 0;
-            display: none;
-            /* Hidden by default, show on larger screens */
-        }
-
-        .doodle-social-icons a {
-            color: var(--color-text-main);
-            text-decoration: none;
-        }
-
-        .doodle-your-photostrip {
-            position: absolute;
-            top: -60px;
-            right: 0px;
-            font-family: var(--font-doodle);
-            font-size: 3rem;
-            color: var(--color-text-main);
-            line-height: 1;
-            transform: rotate(5deg);
-            z-index: 0;
-            white-space: nowrap;
-            display: none;
-            /* Hidden by default, show on larger screens */
-        }
-
-        .doodle-your-photostrip::after {
-            content: '⤸';
-            /* A swirly arrow or similar */
-            display: block;
-            font-size: 2rem;
-            transform: rotate(40deg) translateX(30px);
-            position: absolute;
-            bottom: -20px;
-            right: 0;
-        }
-
-
-        @media (min-width: 1200px) {
-
-            /* Show doodles on wider screens */
-            .doodle-arrow-right,
-            .doodle-scissors,
-            .doodle-tag-me,
-            .doodle-social-icons,
-            .doodle-your-photostrip {
-                display: block;
-            }
-
-            .doodle-arrow-right {
-                left: -120px;
-            }
-
-            .doodle-scissors {
-                right: -100px;
-            }
-
-            .doodle-tag-me {
-                left: -150px;
-            }
-
-            .doodle-social-icons {
-                left: -150px;
-            }
-
-            .doodle-your-photostrip {
-                right: -20px;
-                top: -80px;
-            }
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            .nav-brand {
-                font-size: 2.5rem;
-                padding: 0.3rem 1rem;
-                box-shadow: 4px 4px 0px var(--color-text-main);
-            }
-
-            .main-grid {
-                gap: 1.5rem;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-
-            .btn {
-                font-size: 1rem;
-                padding: 0.7rem 1rem;
-            }
-
-            .polaroid-frame {
-                transform: rotate(0deg);
-                margin-bottom: 1.5rem;
-                box-shadow: 4px 4px 0px var(--color-text-main);
-            }
-
-            .polaroid-frame:hover {
-                transform: none;
-                box-shadow: 6px 6px 0px var(--color-text-main);
-            }
-
-            .empty-state h3 {
-                font-size: 1.2rem;
-            }
-
-            .empty-state p {
-                font-size: 0.9rem;
-            }
-
-            .tab-btn {
-                font-size: 0.9rem;
-                padding: 0.6rem 0.3rem;
-            }
-
-            .label {
-                font-size: 0.9rem;
-            }
-
-            .input-field {
-                font-size: 1rem;
-            }
-
-            .option-btn {
-                font-size: 0.9rem;
-            }
-
-            .doodle-arrow-right,
-            .doodle-scissors,
-            .doodle-tag-me,
-            .doodle-social-icons,
-            .doodle-your-photostrip {
-                display: none !important;
-            }
+            font-family: var(--font-main);
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation - Reimagined as main title, no links -->
+    <!-- Navigation -->
     <nav class="nav">
         <a href="/" class="nav-brand">Polaroid Booth</a>
-        <ul class="nav-links">
-            <!-- Hidden as per doodle style -->
-        </ul>
     </nav>
 
     <div class="container">
-        <!-- Header is hidden as per inspiration -->
-        <header class="header">
-            <h1>Free Online Polaroid Booth - Instant Photos</h1>
-            <p>Capture the moment. Create fun, vintage-style polaroid photostrips instantly from your camera or uploads.
-            </p>
-        </header>
-
         <div class="main-grid">
 
             <div class="input-column">
@@ -991,7 +557,7 @@
                         <video id="videoElement" autoplay playsinline muted class="hidden"></video>
                         <div id="videoPlaceholder" class="video-placeholder">
                             <div class="video-placeholder-icon">📸</div>
-                            <div>Ready to snap some fun photos!</div>
+                            <div>Ready for your close-up?</div>
                         </div>
                         <div id="countdownOverlay" class="countdown-overlay hidden">
                             <div id="countdownNumber" class="countdown-number">3</div>
@@ -999,61 +565,27 @@
                     </div>
                     <div class="controls-grid" id="cameraControls">
                         <button class="btn btn-primary" id="startCameraBtn" style="grid-column: 1 / -1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
-                                </path>
-                                <circle cx="12" cy="13" r="3"></circle>
-                            </svg>
                             Start Camera
                         </button>
                         <button class="btn btn-outline" id="uploadBtn" style="grid-column: 1 / -1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="17 8 12 3 7 8"></polyline>
-                                <line x1="12" y1="3" x2="12" y2="15"></line>
-                            </svg>
                             Upload Photo
                         </button>
                     </div>
 
                     <div class="controls-grid hidden" id="photoControls">
-                        <button class="btn btn-primary" id="captureBtn">📸 Snap!</button>
-                        <button class="btn btn-primary" id="multiCaptureBtn">📸📸 Photostrip</button>
-                        <button class="btn btn-outline" id="switchCameraBtn">🔄 Switch</button>
-                        <button class="btn btn-outline" id="stopCameraBtn">⏹️ Stop Camera</button>
+                        <button class="btn btn-primary" id="captureBtn">Snap!</button>
+                        <button class="btn btn-primary" id="multiCaptureBtn">Photostrip</button>
+                        <button class="btn btn-outline" id="switchCameraBtn">Switch</button>
+                        <button class="btn btn-outline" id="stopCameraBtn">Stop Camera</button>
                     </div>
                 </div>
-
-                <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
             </div>
 
             <div class="output-column">
-                <!-- Doodle Elements -->
-                <div class="doodle-your-photostrip">your<br>photostrip!</div>
-                <div class="doodle-scissors">✂️</div>
-                <div class="doodle-tag-me">tag me! 😊</div>
-                <div class="doodle-social-icons">
-                    <a href="https://instagram.com/photobooth.co" target="_blank" rel="noopener"
-                        aria-label="Follow us on Instagram @photobooth.co"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-instagram">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg></a>
-                </div>
-
-
                 <div id="emptyState" class="empty-state">
                     <div class="empty-state-icon">🖼️</div>
-                    <h3>Start making memories!</h3>
-                    <p>Click 'Start Camera' or 'Upload Photo' to begin.</p>
+                    <h3>Create your masterpiece!</h3>
+                    <p>Use your camera or upload a photo to start.</p>
                 </div>
 
                 <div id="polaroidPreview" class="hidden">
@@ -1062,83 +594,56 @@
 
                 <div class="card hidden" id="customizationCard">
                     <div class="tab-menu">
-                        <button class="tab-btn active" onclick="showTab(event, 'filters')">🎨 Filters</button>
-                        <button class="tab-btn" onclick="showTab(event, 'adjust')">⚙️ Adjust</button>
-                        <button class="tab-btn" onclick="showTab(event, 'text')">✏️ Text</button>
-                        <button class="tab-btn" onclick="showTab(event, 'stickers')">😊 Stickers</button>
+                        <button class="tab-btn active" onclick="showTab(event, 'filters')">Filters</button>
+                        <button class="tab-btn" onclick="showTab(event, 'adjust')">Adjust</button>
+                        <button class="tab-btn" onclick="showTab(event, 'frames')">Frames</button>
+                        <button class="tab-btn" onclick="showTab(event, 'text')">Text</button>
                     </div>
 
                     <div id="tab-filters" class="tab-pane active">
-                        <label class="label">Choose a look:</label>
-                        <div class="option-grid" id="filterPresets">
-                            <!-- Filter presets will be injected here by JS -->
-                        </div>
+                        <!-- Filters content will be generated by JS -->
                     </div>
 
                     <div id="tab-adjust" class="tab-pane">
-                        <label class="label">Fine-tune your photo:</label>
-                        <!-- Sliders will be injected here by JS -->
+                        <!-- Adjustments content will be generated by JS -->
                     </div>
 
+                    <div id="tab-frames" class="tab-pane">
+                        <!-- Frames content will be generated by JS -->
+                    </div>
+                    
                     <div id="tab-text" class="tab-pane">
                         <div class="section">
-                            <label class="label">Write a little note:</label>
+                            <label class="label">Add a caption:</label>
                             <input type="text" id="customText" class="input-field" placeholder="A moment in time..."
                                 maxlength="40">
                         </div>
                         <div class="section">
-                            <label class="label">Pick a handwriting style:</label>
+                            <label class="label">Choose a font:</label>
                             <div class="option-grid" id="fontOptions">
-                                <!-- Font options injected here by JS -->
+                                <!-- Font options will be generated by JS -->
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div id="tab-stickers" class="tab-pane">
-                        <div class="section">
-                            <label class="label">Add some flair:</label>
-                            <div class="option-grid" id="stickerOptions">
-                                <!-- Sticker options will be injected here by JS -->
-                            </div>
-                        </div>
-                        <div class="section" id="activeStickersList" style="display: none;">
-                            <label class="label">Your stickers:</label>
-                            <div id="stickersList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                                <!-- Active stickers will appear here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="final-actions">
-                        <button class="btn btn-outline" id="clearBtn">
-                            🔄 Start Over
-                        </button>
-                        <button class="btn btn-primary" id="downloadBtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            Download
-                        </button>
-                    </div>
+                <div class="final-actions">
+                    <button class="btn btn-outline" id="clearBtn">
+                        Start Over
+                    </button>
+                    <button class="btn btn-primary" id="downloadBtn">
+                        Download
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Removed the large SEO content section as per the simplified UI approach -->
-    <!-- You might want to place this content in a dedicated 'About' page or a collapsible section if needed for SEO. -->
-
     <canvas id="canvas" class="hidden"></canvas>
-
     <script>
         // --- STATE MANAGEMENT ---
         let stream = null;
         let capturedPhoto = null;
-        let currentFacingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+        let currentFacingMode = 'user';
 
         const defaultAdjustments = {
             brightness: 100,
@@ -1149,11 +654,9 @@
         };
         let adjustments = { ...defaultAdjustments };
 
-        let selectedFont = "'Patrick Hand', cursive"; // Default to Patrick Hand for doodle style
+        let selectedFont = "'Patrick Hand', cursive";
         let selectedFilterPreset = 'none';
-        let activeStickers = [];
-        let multiPhotos = [];
-        let isMultiCapture = false;
+        let selectedFrame = 'default';
 
         // --- DOM ELEMENTS ---
         const video = document.getElementById('videoElement');
@@ -1168,7 +671,11 @@
         const multiCaptureBtn = document.getElementById('multiCaptureBtn');
         const switchCameraBtn = document.getElementById('switchCameraBtn');
         const uploadBtn = document.getElementById('uploadBtn');
-        const fileInput = document.getElementById('fileInput');
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.classList.add('hidden');
+        document.body.appendChild(fileInput);
         const emptyState = document.getElementById('emptyState');
         const polaroidPreview = document.getElementById('polaroidPreview');
         const customizationCard = document.getElementById('customizationCard');
@@ -1181,108 +688,56 @@
         const fonts = [
             { name: 'Patrick Hand', family: "'Patrick Hand', cursive" },
             { name: 'Caveat', family: "'Caveat', cursive" },
-            { name: 'Dancing Script', family: "'Dancing Script', cursive" }
+            { name: 'Dancing Script', family: "'Dancing Script', cursive" },
+            { name: 'Indie Flower', family: "'Indie Flower', cursive" },
         ];
 
-        const adjustmentConfigs = [
-            { id: 'brightness', name: 'Brightness', min: 0, max: 200, unit: '%' },
-            { id: 'contrast', name: 'Contrast', min: 0, max: 200, unit: '%' },
-            { id: 'saturate', name: 'Saturation', min: 0, max: 200, unit: '%' },
-            { id: 'sepia', name: 'Sepia', min: 0, max: 100, unit: '%' },
-            { id: 'grayscale', name: 'Grayscale', min: 0, max: 100, unit: '%' }
-        ];
-
-        // Filter Presets
         const filterPresets = [
             { id: 'none', name: 'Original', values: { brightness: 100, contrast: 100, saturate: 100, sepia: 0, grayscale: 0 } },
             { id: 'vintage', name: 'Vintage', values: { brightness: 110, contrast: 120, saturate: 130, sepia: 40, grayscale: 0 } },
-            { id: 'classic', name: 'Classic', values: { brightness: 105, contrast: 110, saturate: 100, sepia: 20, grayscale: 0 } },
             { id: 'bw', name: 'B&W', values: { brightness: 100, contrast: 120, saturate: 100, sepia: 0, grayscale: 100 } },
-            { id: 'warm', name: 'Warm', values: { brightness: 110, contrast: 100, saturate: 140, sepia: 30, grayscale: 0 } },
-            { id: 'retro', name: 'Retro', values: { brightness: 110, contrast: 90, saturate: 100, sepia: 60, grayscale: 0 } },
-            { id: 'dreamy', name: 'Dreamy', values: { brightness: 110, contrast: 90, saturate: 140, sepia: 0, grayscale: 0 } },
             { id: 'cool', name: 'Cool', values: { brightness: 105, contrast: 110, saturate: 80, sepia: 0, grayscale: 0 } },
-            { id: 'faded', name: 'Faded', values: { brightness: 115, contrast: 85, saturate: 70, sepia: 0, grayscale: 0 } },
-            { id: 'noir', name: 'Noir', values: { brightness: 90, contrast: 150, saturate: 100, sepia: 0, grayscale: 100 } },
-            { id: 'sunset', name: 'Sunset', values: { brightness: 110, contrast: 110, saturate: 160, sepia: 50, grayscale: 0 } },
-            { id: 'arctic', name: 'Arctic', values: { brightness: 120, contrast: 100, saturate: 60, sepia: 0, grayscale: 0 } }
         ];
 
-        // Stickers
-        const stickers = [
-            '❤️', '💕', '💖', '💗', '💙', '💚', '💛', '🧡', '💜',
-            '⭐', '✨', '🌟', '💫', '🌙', '☀️', '🌈', '☁️',
-            '😊', '😍', '🥰', '😎', '🤩', '😘', '😂', '🤗',
-            '🎉', '🎊', '🎈', '🎁', '🎀', '🎂', '🍰',
-            '🌸', '🌺', '🌻', '🌹', '🌷', '🌼', '💐',
-            '🦋', '🐝', '🐞', '🦄', '🐱', '🐶', '🐻',
-            '📷', '🎵', '🎶', '🎸', '🎨', '✏️', '📝'
+        const framePresets = [
+            { id: 'default', name: 'Classic' },
+            { id: 'dark', name: 'Dark' },
+            { id: 'light', name: 'Light' },
         ];
 
         // --- INITIALIZATION ---
-
         function initializeUI() {
-            // Filter Presets
-            const filterPresetsContainer = document.getElementById('filterPresets');
-            filterPresetsContainer.innerHTML = '';
-            filterPresets.forEach(preset => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn' + (preset.id === selectedFilterPreset ? ' active' : '');
-                btn.innerHTML = `<div class="option-name">${preset.name}</div>`;
-                btn.onclick = () => applyFilterPreset(preset.id, btn);
-                filterPresetsContainer.appendChild(btn);
-            });
+            const filtersContainer = document.getElementById('tab-filters');
+            filtersContainer.innerHTML = filterPresets.map(preset => `
+                <button class="option-btn ${preset.id === selectedFilterPreset ? 'active' : ''}" onclick="applyFilterPreset('${preset.id}', this)">
+                    ${preset.name}
+                </button>
+            `).join('');
 
-            // Adjustments
             const adjustContainer = document.getElementById('tab-adjust');
-            adjustContainer.innerHTML = '';
-            adjustmentConfigs.forEach(adj => {
-                const control = document.createElement('div');
-                control.className = 'adjustment-control';
-                control.innerHTML = `
-                    <label for="${adj.id}">
-                        <span>${adj.name}</span>
-                        <span class="value" id="${adj.id}Value">${adjustments[adj.id]}%</span>
-                    </label>
-                    <input type="range" id="${adj.id}" min="${adj.min}" max="${adj.max}" value="${adjustments[adj.id]}">
-                `;
-                adjustContainer.appendChild(control);
+            adjustContainer.innerHTML = Object.keys(defaultAdjustments).map(key => `
+                <div class="adjustment-control">
+                    <label for="${key}">${key.charAt(0).toUpperCase() + key.slice(1)}</label>
+                    <input type="range" id="${key}" min="0" max="200" value="${adjustments[key]}" oninput="updateAdjustment('${key}', this.value)">
+                </div>
+            `).join('');
 
-                document.getElementById(adj.id).addEventListener('input', (e) => {
-                    adjustments[adj.id] = e.target.value;
-                    document.getElementById(`${adj.id}Value`).textContent = `${e.target.value}%`;
-                    selectedFilterPreset = 'custom';
-                    updateFilterPresetButtons();
-                    renderPreview();
-                });
-            });
+            const framesContainer = document.getElementById('tab-frames');
+            framesContainer.innerHTML = framePresets.map(frame => `
+                <button class="option-btn ${frame.id === selectedFrame ? 'active' : ''}" onclick="selectFrame('${frame.id}', this)">
+                    ${frame.name}
+                </button>
+            `).join('');
 
-            // Fonts
             const fontContainer = document.getElementById('fontOptions');
-            fontContainer.innerHTML = '';
-            fonts.forEach(font => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn' + (font.family === selectedFont ? ' active' : '');
-                btn.textContent = font.name;
-                btn.style.fontFamily = font.family;
-                btn.onclick = () => selectFont(font.family, btn);
-                fontContainer.appendChild(btn);
-            });
-
-            // Stickers
-            const stickerContainer = document.getElementById('stickerOptions');
-            stickerContainer.innerHTML = '';
-            stickers.forEach(sticker => {
-                const btn = document.createElement('div');
-                btn.className = 'sticker-item';
-                btn.textContent = sticker;
-                btn.onclick = () => addSticker(sticker);
-                stickerContainer.appendChild(btn);
-            });
+            fontContainer.innerHTML = fonts.map(font => `
+                <button class="option-btn ${font.family === selectedFont ? 'active' : ''}" onclick="selectFont('${font.family}', this)">
+                    ${font.name}
+                </button>
+            `).join('');
         }
 
         // --- TAB NAVIGATION ---
-
         function showTab(event, tabId) {
             document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1291,36 +746,39 @@
         }
 
         // --- OPTION SELECTION ---
-
         function applyFilterPreset(presetId, element) {
             selectedFilterPreset = presetId;
             const preset = filterPresets.find(p => p.id === presetId);
             if (preset) {
                 adjustments = { ...preset.values };
                 updateAdjustmentSliders();
-                updateFilterPresetButtons();
+                document.querySelectorAll('#tab-filters .option-btn').forEach(btn => btn.classList.remove('active'));
+                element.classList.add('active');
                 renderPreview();
             }
         }
 
-        function updateFilterPresetButtons() {
-            document.querySelectorAll('#filterPresets .option-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = Array.from(document.querySelectorAll('#filterPresets .option-btn'))
-                .find((btn, idx) => filterPresets[idx].id === selectedFilterPreset);
-            if (activeBtn) activeBtn.classList.add('active');
+        function updateAdjustment(key, value) {
+            adjustments[key] = value;
+            selectedFilterPreset = 'custom';
+            document.querySelectorAll('#tab-filters .option-btn').forEach(btn => btn.classList.remove('active'));
+            renderPreview();
         }
 
         function updateAdjustmentSliders() {
-            adjustmentConfigs.forEach(adj => {
-                const slider = document.getElementById(adj.id);
-                const valueDisplay = document.getElementById(`${adj.id}Value`);
-                if (slider && valueDisplay) {
-                    slider.value = adjustments[adj.id];
-                    valueDisplay.textContent = `${adjustments[adj.id]}%`;
-                }
+            Object.keys(adjustments).forEach(key => {
+                const slider = document.getElementById(key);
+                if (slider) slider.value = adjustments[key];
             });
         }
 
+        function selectFrame(frameId, element) {
+            selectedFrame = frameId;
+            document.querySelectorAll('#tab-frames .option-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            renderPreview();
+        }
+        
         function selectFont(family, element) {
             selectedFont = family;
             document.querySelectorAll('#fontOptions .option-btn').forEach(btn => btn.classList.remove('active'));
@@ -1328,68 +786,11 @@
             renderPreview();
         }
 
-        // --- STICKER FUNCTIONS ---
-
-        function addSticker(emoji) {
-            const stickerId = Date.now() + Math.random();
-
-            // Position stickers in corners to avoid blocking the photo
-            const corners = [
-                { x: 8, y: 8 },      // Top-left
-                { x: 85, y: 8 },     // Top-right
-                { x: 8, y: 85 },     // Bottom-left
-                { x: 85, y: 85 }     // Bottom-right
-            ];
-
-            // Cycle through corners based on number of stickers
-            const cornerIndex = activeStickers.length % corners.length;
-            const position = corners[cornerIndex];
-
-            activeStickers.push({
-                id: stickerId,
-                emoji: emoji,
-                x: position.x,
-                y: position.y
-            });
-            updateStickersList();
-            renderPreview();
-        }
-
-        function removeSticker(stickerId) {
-            activeStickers = activeStickers.filter(s => s.id !== stickerId);
-            updateStickersList();
-            renderPreview();
-        }
-
-        function updateStickersList() {
-            const stickersList = document.getElementById('stickersList');
-            const activeStickersList = document.getElementById('activeStickersList');
-
-            if (activeStickers.length === 0) {
-                activeStickersList.style.display = 'none';
-                return;
-            }
-
-            activeStickersList.style.display = 'block';
-            stickersList.innerHTML = '';
-
-            activeStickers.forEach(sticker => {
-                const badge = document.createElement('div');
-                badge.className = 'active-sticker-badge';
-                badge.innerHTML = `
-                    <span>${sticker.emoji}</span>
-                    <button class="remove-sticker-btn" onclick="removeSticker(${sticker.id})">×</button>
-                `;
-                stickersList.appendChild(badge);
-            });
-        }
-
         // --- CAMERA & UPLOAD ---
-
         async function startCamera() {
             try {
                 stream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: 'user', width: { ideal: 1024 }, height: { ideal: 1024 } },
+                    video: { facingMode: currentFacingMode, width: { ideal: 1024 }, height: { ideal: 1024 } },
                     audio: false
                 });
                 video.srcObject = stream;
@@ -1398,9 +799,15 @@
                 cameraControls.classList.add('hidden');
                 photoControls.classList.remove('hidden');
             } catch (error) {
-                console.error('Camera error:', error);
-                alert('Unable to access camera. Please check permissions.');
+                alert('Could not access camera. Please check permissions.');
             }
+        }
+
+        async function switchCamera() {
+            if (!stream) return;
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            stream.getTracks().forEach(track => track.stop());
+            await startCamera();
         }
 
         function stopCamera() {
@@ -1413,21 +820,15 @@
             photoControls.classList.add('hidden');
         }
 
-        // Countdown Timer
         function startCountdown() {
-            return new Promise((resolve) => {
+            return new Promise(resolve => {
                 let count = 3;
                 countdownOverlay.classList.remove('hidden');
                 countdownNumber.textContent = count;
-
                 const interval = setInterval(() => {
                     count--;
                     if (count > 0) {
                         countdownNumber.textContent = count;
-                        countdownNumber.style.animation = 'none';
-                        setTimeout(() => {
-                            countdownNumber.style.animation = 'countdownPulse 1s ease-in-out';
-                        }, 10);
                     } else {
                         clearInterval(interval);
                         countdownOverlay.classList.add('hidden');
@@ -1439,90 +840,29 @@
 
         async function capturePhoto() {
             if (!stream) return;
-
-            captureBtn.disabled = true;
-            multiCaptureBtn.disabled = true;
             await startCountdown();
-
             const ctx = canvas.getContext('2d');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             ctx.save();
-            ctx.scale(-1, 1);
-            ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
-            ctx.restore();
-            capturedPhoto = canvas.toDataURL('image/jpeg', 0.95);
-            multiPhotos = [];
-            isMultiCapture = false;
-            showOutputUI();
-            renderPreview();
-            captureBtn.disabled = false;
-            multiCaptureBtn.disabled = false;
-        }
-
-        async function captureMultiPhotos() {
-            if (!stream) return;
-
-            multiCaptureBtn.disabled = true;
-            captureBtn.disabled = true;
-            multiPhotos = [];
-            isMultiCapture = true;
-
-            for (let i = 0; i < 4; i++) {
-                // Show which photo we're taking
-                countdownOverlay.classList.remove('hidden');
-                countdownNumber.textContent = `Photo ${i + 1} of 4`;
-                countdownNumber.style.fontSize = '3rem';
-                countdownNumber.style.animation = 'countdownPulse 1s ease-in-out';
-                await new Promise(resolve => setTimeout(resolve, 1200));
-
-                // Regular countdown (3, 2, 1)
-                countdownNumber.style.fontSize = '8rem';
-                await startCountdown();
-
-                // Capture the photo
-                const ctx = canvas.getContext('2d');
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                ctx.save();
+            if (currentFacingMode === 'user') {
                 ctx.scale(-1, 1);
                 ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
-                ctx.restore();
-                multiPhotos.push(canvas.toDataURL('image/jpeg', 0.95));
-
-                // Show "Captured!" message briefly
-                if (i < 3) {
-                    countdownOverlay.classList.remove('hidden');
-                    countdownNumber.textContent = '✓';
-                    countdownNumber.style.fontSize = '6rem';
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    countdownOverlay.classList.add('hidden');
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                }
+            } else {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             }
-
-            // Show completion message
-            countdownOverlay.classList.remove('hidden');
-            countdownNumber.textContent = 'Done! ✓';
-            countdownNumber.style.fontSize = '4rem';
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            countdownOverlay.classList.add('hidden');
-
-            capturedPhoto = null;
+            ctx.restore();
+            capturedPhoto = canvas.toDataURL('image/jpeg', 0.95);
             showOutputUI();
             renderPreview();
-            multiCaptureBtn.disabled = false;
-            captureBtn.disabled = false;
         }
 
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (e) => {
+                reader.onload = e => {
                     capturedPhoto = e.target.result;
-                    multiPhotos = [];
-                    isMultiCapture = false;
                     showOutputUI();
                     renderPreview();
                 };
@@ -1532,7 +872,6 @@
         }
 
         // --- UI STATE & RENDERING ---
-
         function showOutputUI() {
             emptyState.classList.add('hidden');
             polaroidPreview.classList.remove('hidden');
@@ -1541,17 +880,13 @@
 
         function resetToDefaults() {
             capturedPhoto = null;
-            multiPhotos = [];
-            isMultiCapture = false;
-            activeStickers = [];
             polaroidPreview.classList.add('hidden');
             customizationCard.classList.add('hidden');
             emptyState.classList.remove('hidden');
             customTextEl.value = '';
-
             adjustments = { ...defaultAdjustments };
             selectedFilterPreset = 'none';
-            updateStickersList();
+            selectedFrame = 'default';
             initializeUI();
         }
 
@@ -1562,56 +897,27 @@
         }
 
         function renderPreview() {
-            if (!capturedPhoto && multiPhotos.length === 0) return;
-
+            if (!capturedPhoto) return;
             const customText = customTextEl.value;
             const filterStyle = buildFilterString();
 
-            if (isMultiCapture && multiPhotos.length > 0) {
-                // Multi-photo grid
-                const photosHTML = multiPhotos.map((photo, idx) => `
-                    <div class="multi-photo-item">
-                        <img src="${photo}" style="filter: ${filterStyle}" alt="Photo ${idx + 1}">
-                        ${activeStickers.map(sticker => `
-                            <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
-                        `).join('')}
+            polaroidPreview.innerHTML = `
+                <div class="polaroid-frame" data-frame-style="${selectedFrame}">
+                    <div class="polaroid-photo">
+                        <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview">
                     </div>
-                `).join('');
-
-                polaroidPreview.innerHTML = `
-                    <div class="polaroid-frame" style="background: var(--color-surface)">
-                        <div class="multi-photo-grid">
-                            ${photosHTML}
-                        </div>
-                        <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
-                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
-                    </div>
-                `;
-            } else if (capturedPhoto) {
-                // Single photo
-                polaroidPreview.innerHTML = `
-                    <div class="polaroid-frame" style="background: var(--color-surface)">
-                        <div class="polaroid-photo" style="position: relative;">
-                            <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview">
-                            ${activeStickers.map(sticker => `
-                                <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
-                            `).join('')}
-                        </div>
-                        <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
-                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
-                    </div>
-                `;
-            }
+                    <div class="polaroid-text" style="font-family: ${selectedFont}">${customText || ''}</div>
+                    <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                </div>
+            `;
         }
 
         // --- FINAL DOWNLOAD ---
-
         function downloadPolaroid() {
-            if (!capturedPhoto && multiPhotos.length === 0) return;
+            if (!capturedPhoto) return;
 
             const dlCanvas = document.createElement('canvas');
             const ctx = dlCanvas.getContext('2d');
-
             const scale = 2;
             const baseWidth = 800;
             const baseHeight = 960;
@@ -1619,140 +925,45 @@
             dlCanvas.width = baseWidth * scale;
             dlCanvas.height = baseHeight * scale;
             ctx.scale(scale, scale);
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
 
-            // 1. Frame
-            ctx.fillStyle = '#FFFFFF';
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-surface');
             ctx.fillRect(0, 0, baseWidth, baseHeight);
 
-            const photoPadding = 40;
-            const photoSize = baseWidth - (photoPadding * 2);
+            const img = new Image();
+            img.onload = () => {
+                ctx.filter = buildFilterString();
+                const photoPadding = 40;
+                const photoSize = baseWidth - (photoPadding * 2);
+                ctx.drawImage(img, photoPadding, photoPadding, photoSize, photoSize);
+                ctx.filter = 'none';
 
-            if (isMultiCapture && multiPhotos.length > 0) {
-                // Multi-photo grid download
-                let loadedCount = 0;
-                const images = [];
+                const customText = customTextEl.value;
+                if (customText.trim()) {
+                    ctx.font = `700 40px ${selectedFont}`;
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text-main');
+                    ctx.textAlign = 'center';
+                    ctx.fillText(customText, baseWidth / 2, baseHeight - 90, baseWidth - 80);
+                }
 
-                multiPhotos.forEach((photoSrc, idx) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        images[idx] = img;
-                        loadedCount++;
+                ctx.font = `500 18px monospace`;
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text-muted');
+                ctx.textAlign = 'right';
+                ctx.fillText(new Date().toLocaleDateString(), baseWidth - photoPadding, baseHeight - 30);
 
-                        if (loadedCount === multiPhotos.length) {
-                            // Draw all photos in grid
-                            const gridSize = photoSize / 2 - 4; // Adjusted for padding within the grid
-                            images.forEach((img, i) => {
-                                const row = Math.floor(i / 2);
-                                const col = i % 2;
-                                const x = photoPadding + col * (gridSize + 8); // 8px for inner grid spacing
-                                const y = photoPadding + row * (gridSize + 8);
-
-                                // --- START: Aspect ratio correction logic ---
-                                const sAspect = img.width / img.height;
-                                const dAspect = 1.0; // Destination grid item is 1:1
-                                let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
-
-                                if (sAspect > dAspect) {
-                                    // Image is wider than 1:1, crop the sides
-                                    sHeight = img.height;
-                                    sWidth = img.height * dAspect;
-                                    sx = (img.width - sWidth) / 2;
-                                } else {
-                                    // Image is taller than 1:1, crop the top/bottom
-                                    sWidth = img.width;
-                                    sHeight = img.width / dAspect;
-                                    sy = (img.height - sHeight) / 2;
-                                }
-                                // --- END: Aspect ratio correction logic ---
-
-                                ctx.filter = buildFilterString();
-                                // Use the new variables to draw the cropped source into the destination
-                                ctx.drawImage(img, sx, sy, sWidth, sHeight, x, y, gridSize, gridSize);
-                                ctx.filter = 'none';
-
-                                // Draw stickers on each photo
-                                activeStickers.forEach(sticker => {
-                                    ctx.font = `40px ${selectedFont}`; // Use selected font for stickers on canvas
-                                    ctx.fillStyle = '#000000'; // Black for stickers
-                                    ctx.fillText(sticker.emoji, x + (gridSize * sticker.x / 100), y + (gridSize * sticker.y / 100));
-                                });
-                            });
-
-                            finishDownload(ctx, baseWidth, baseHeight, photoPadding);
-                        }
-                    };
-                    img.crossOrigin = "anonymous";
-                    img.src = photoSrc;
-                });
-            } else if (capturedPhoto) {
-                // Single photo download
-                const img = new Image();
-                img.onload = () => {
-                    ctx.filter = buildFilterString();
-
-                    const sAspect = img.width / img.height;
-                    const dAspect = 1.0;
-                    let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
-
-                    if (sAspect > dAspect) {
-                        sHeight = img.height;
-                        sWidth = img.height * dAspect;
-                        sx = (img.width - sWidth) / 2;
-                    } else {
-                        sWidth = img.width;
-                        sHeight = img.width / dAspect;
-                        sy = (img.height - sHeight) / 2;
-                    }
-
-                    ctx.drawImage(img, sx, sy, sWidth, sHeight, photoPadding, photoPadding, photoSize, photoSize);
-                    ctx.filter = 'none';
-
-                    // Draw stickers
-                    activeStickers.forEach(sticker => {
-                        ctx.font = `50px ${selectedFont}`;
-                        ctx.fillStyle = '#000000';
-                        ctx.fillText(sticker.emoji, photoPadding + (photoSize * sticker.x / 100), photoPadding + (photoSize * sticker.y / 100));
-                    });
-
-                    finishDownload(ctx, baseWidth, baseHeight, photoPadding);
-                };
-                img.crossOrigin = "anonymous";
-                img.src = capturedPhoto;
-            }
-        }
-
-        function finishDownload(ctx, baseWidth, baseHeight, photoPadding) {
-            const customText = customTextEl.value;
-            if (customText.trim()) {
-                ctx.font = `700 40px ${selectedFont}`;
-                ctx.fillStyle = '#333333';
-                ctx.textAlign = 'center';
-                ctx.fillText(customText, baseWidth / 2, baseHeight - 90, baseWidth - 80);
-            }
-
-            ctx.font = `500 18px monospace`;
-            ctx.fillStyle = '#666666';
-            ctx.globalAlpha = 0.8;
-
-            ctx.textAlign = 'right';
-            ctx.fillText(new Date().toLocaleDateString(), baseWidth - photoPadding, baseHeight - 30);
-
-            ctx.textAlign = 'left';
-            ctx.fillText('Polaroid Booth', photoPadding, baseHeight - 30);
-
-            const link = document.createElement('a');
-            link.download = `polaroid-booth-${Date.now()}.png`;
-            link.href = ctx.canvas.toDataURL('image/png');
-            link.click();
+                const link = document.createElement('a');
+                link.download = `polaroid-booth-${Date.now()}.png`;
+                link.href = dlCanvas.toDataURL('image/png');
+                link.click();
+            };
+            img.crossOrigin = "anonymous";
+            img.src = capturedPhoto;
         }
 
         // --- EVENT LISTENERS ---
         startCameraBtn.addEventListener('click', startCamera);
         stopCameraBtn.addEventListener('click', stopCamera);
+        switchCameraBtn.addEventListener('click', switchCamera);
         captureBtn.addEventListener('click', capturePhoto);
-        multiCaptureBtn.addEventListener('click', captureMultiPhotos);
         uploadBtn.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', handleFileUpload);
         clearBtn.addEventListener('click', resetToDefaults);
@@ -1762,23 +973,6 @@
         // --- INITIALIZE ON LOAD ---
         initializeUI();
     </script>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-bottom">
-            Follow us on Instagram <a href="https://instagram.com/photobooth.co" target="_blank"
-                rel="noopener">@photobooth.co</a> 📸
-            <br>
-            <span style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">
-                <a href="/about-test.html" style="color: var(--color-text-muted); text-decoration: none;">About</a> ·
-                <a href="/contact-test.html" style="color: var(--color-text-muted); text-decoration: none;">Contact</a>
-                ·
-                <a href="/privacy-test.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
-                ·
-                <a href="/terms-test.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
-            </span>
-        </div>
-    </footer>
 </body>
 
 </html>

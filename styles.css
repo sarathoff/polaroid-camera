@@ -1,0 +1,1348 @@
+
+        :root {
+            --color-background: #F8F5F2;
+            /* Light beige */
+            --color-surface: #FFFFFF;
+            /* White */
+            --color-border: #333333;
+            /* Darker grey for borders */
+            --color-text-main: #333333;
+            /* Black/Dark Grey */
+            --color-text-muted: #666666;
+            /* Medium Grey */
+            --color-accent: #E57373;
+            /* Red for danger/active */
+            --font-doodle: 'Patrick Hand', cursive;
+            /* Main doodle font */
+            --font-monospace: monospace;
+            /* For dates */
+            --radius-sketch: 8px;
+            /* Slightly rounded, like a sketch */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-doodle);
+            background-color: var(--color-background);
+            color: var(--color-text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            display: none;
+            /* Hide header text as per inspiration */
+        }
+
+        /* Step Progress Indicator */
+        .step-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto 3rem;
+            max-width: 600px;
+            padding: 0 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+
+        .step-item.active {
+            opacity: 1;
+        }
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-surface);
+            border: 3px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: var(--font-doodle);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .step-item.active .step-circle {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-family: var(--font-doodle);
+            font-weight: 600;
+        }
+
+        .step-line {
+            width: 80px;
+            height: 3px;
+            background: var(--color-border);
+            margin: 0 0.5rem;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 300%;
+        }
+
+        .slide {
+            min-width: 33.333%;
+            width: 33.333%;
+            padding: 0 1rem;
+        }
+
+        .slide-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .slide-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-family: var(--font-doodle);
+        }
+
+        /* Customize Layout */
+        .customize-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .customize-layout {
+                grid-template-columns: 400px 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .preview-section {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .preview-container {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .customization-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Slide Navigation */
+        .slide-navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Download Card */
+        .download-card {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .final-preview-container {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .download-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-large {
+            padding: 1.2rem 2rem;
+            font-size: 1.3rem;
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            padding: 1.5rem;
+            box-shadow: 4px 4px 0px var(--color-text-main);
+            /* Sketchy shadow */
+            position: relative;
+            z-index: 1;
+            /* Ensure card is above background doodles */
+        }
+
+        /* --- Left Column: Input (Camera/Upload) --- */
+        .input-column {
+            position: relative;
+        }
+
+        .video-container {
+            position: relative;
+            aspect-ratio: 1/1;
+            background: #EAE3DC;
+            /* Light grey for placeholder */
+            border-radius: var(--radius-sketch);
+            overflow: hidden;
+            border: 4px solid var(--color-border);
+            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1);
+            /* Mirror camera */
+            display: block;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--color-text-muted);
+            font-size: 1.2rem;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        .video-placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .countdown-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            backdrop-filter: blur(4px);
+        }
+
+        .countdown-number {
+            font-size: 8rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            animation: countdownPulse 1s ease-in-out;
+            font-family: var(--font-doodle);
+            /* Use doodle font for countdown */
+        }
+
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.85rem 1.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-family: var(--font-doodle);
+            font-size: 1.2rem;
+            /* Larger font for doodle style */
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: var(--color-surface);
+            color: var(--color-text-main);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+            /* Sketchy shadow */
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            /* Simulate button press */
+            box-shadow: none;
+            background: var(--color-background);
+        }
+
+        .btn:focus-visible {
+            outline: 2px dashed var(--color-border);
+            /* Dashed outline */
+            outline-offset: 4px;
+        }
+
+        .btn-primary {
+            background: var(--color-text-main);
+            /* Dark background for primary */
+            color: var(--color-surface);
+            /* White text */
+            box-shadow: 2px 2px 0px var(--color-text-main);
+            /* Match card shadow */
+        }
+
+        .btn-primary:hover {
+            background: var(--color-text-main);
+            color: var(--color-surface);
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .btn-outline {
+            background: var(--color-surface);
+            color: var(--color-text-main);
+        }
+
+        .btn-danger {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+            border-color: #d32f2f;
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+
+        /* --- Right Column: Output & Edit --- */
+        .output-column {
+            position: relative;
+            /* Allow for absolute positioning of doodles */
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            /* Center polaroid and customization */
+        }
+
+        .polaroid-frame {
+            background: var(--color-surface);
+            padding: 16px 16px 60px 16px;
+            border-radius: var(--radius-sketch);
+            box-shadow: 6px 6px 0px var(--color-text-main);
+            /* Stronger shadow for polaroid */
+            max-width: 350px;
+            width: 100%;
+            position: relative;
+            transform: rotate(-2.5deg);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 2px solid var(--color-border);
+            margin-bottom: 2rem;
+            /* Space before customization card */
+        }
+
+        .polaroid-frame:hover {
+            transform: rotate(0deg) translateY(-8px) scale(1.02);
+            box-shadow: 10px 10px 0px var(--color-text-main);
+        }
+
+        /* Frame Variants */
+        .polaroid-frame.black-frame {
+            background: #2C2C2C;
+            border-color: #1A1A1A;
+        }
+
+        .polaroid-frame.black-frame .polaroid-text,
+        .polaroid-frame.black-frame .polaroid-date {
+            color: #FFFFFF;
+        }
+
+        .polaroid-frame.rough-edge-frame {
+            border-radius: 2px;
+            box-shadow: 6px 6px 0px var(--color-text-main),
+                inset 0 0 0 8px rgba(0, 0, 0, 0.05);
+            border: 3px solid var(--color-border);
+            border-style: dashed;
+        }
+
+        .polaroid-frame.pastel-frame {
+            background: #FFE4E1;
+            border-color: #FFB6C1;
+        }
+
+        .polaroid-frame.pastel-frame.blue {
+            background: #E0F2F7;
+            border-color: #81D4FA;
+        }
+
+        .polaroid-frame.pastel-frame.green {
+            background: #E8F5E9;
+            border-color: #A5D6A7;
+        }
+
+        /* Film Strip Frame */
+        .polaroid-frame.film-strip-frame {
+            background: #000000;
+            padding: 20px 10px;
+            border-radius: 5px;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.7);
+            transform: rotate(-5deg);
+            max-width: 250px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .polaroid-frame.film-strip-frame .multi-photo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            background: none;
+        }
+
+        .polaroid-frame.film-strip-frame .multi-photo-item {
+            aspect-ratio: 4/3;
+            border: none;
+            background: #222;
+            margin: 0 -10px;
+        }
+
+        .polaroid-frame.film-strip-frame .polaroid-text,
+        .polaroid-frame.film-strip-frame .polaroid-date {
+            color: #f0f0f0;
+            margin-top: 10px;
+        }
+
+        /* Color Picker Styles */
+        .color-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-option.active {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px var(--color-accent);
+        }
+
+        .color-option.active::after {
+            content: '✓';
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .color-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .color-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .color-input::-webkit-color-swatch {
+            border-radius: 50%;
+            border: 2px solid var(--color-border);
+        }
+
+        .color-input::-moz-color-swatch {
+            border-radius: 50%;
+            border: 2px solid var(--color-border);
+        }
+
+        .polaroid-photo {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #F0EDE6;
+            /* Light background for photo area */
+            position: relative;
+            border: 1px solid var(--color-border);
+            /* Inner border for photo */
+        }
+
+        .polaroid-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .polaroid-text {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--color-text-main);
+            min-height: 2rem;
+            margin-top: 1rem;
+            line-height: 1.2;
+            padding: 0 0.5rem;
+            word-wrap: break-word;
+            font-family: var(--font-doodle);
+            /* Ensure doodle font */
+        }
+
+        .polaroid-date {
+            text-align: center;
+            font-family: var(--font-monospace);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: transparent;
+            border: 2px dashed var(--color-border);
+            /* Dashed border for empty state */
+            border-radius: var(--radius-sketch);
+            color: var(--color-text-muted);
+            font-family: var(--font-doodle);
+            font-size: 1.2rem;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-doodle);
+            font-size: 1.8rem;
+            color: var(--color-text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Customization Tabs --- */
+        #customizationCard {
+            width: 100%;
+            max-width: 450px;
+            /* Limit width of customization card */
+            margin: 0 auto;
+            /* Center it */
+        }
+
+        .tab-menu {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background: var(--color-background);
+            border-radius: var(--radius-sketch);
+            padding: 0.25rem;
+            border: 2px solid var(--color-border);
+            gap: 0.25rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            flex: 0 0 auto;
+            min-width: 50px;
+            padding: 0.75rem 0.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-doodle);
+            font-size: 1.5rem;
+            color: var(--color-text-muted);
+            border-radius: var(--radius-sketch);
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--color-text-main);
+            background: rgba(0, 0, 0, 0.05);
+            /* Light hover effect */
+        }
+
+        .tab-btn.active {
+            color: var(--color-text-main);
+            background: var(--color-surface);
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--color-border);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 0.75rem 0.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-size: 1rem;
+            font-family: var(--font-doodle);
+            color: var(--color-text-main);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .option-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+            background: var(--color-background);
+        }
+
+        .option-btn.active {
+            border-color: var(--color-text-main);
+            background: var(--color-text-main);
+            color: white;
+            transform: none;
+            /* No transform when active */
+            box-shadow: none;
+        }
+
+        .option-btn.active .option-name {
+            color: white;
+        }
+
+        .option-name {
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            font-weight: 400;
+            margin-top: 0.5rem;
+            transition: color 0.2s;
+            font-family: var(--font-doodle);
+        }
+
+        /* Frame Preview Boxes */
+        .option-preview-box {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 0.5rem;
+            border: 2px solid var(--color-border);
+            background: #fff;
+            background-size: cover;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .frame-preview-default {
+            background: #FFFFFF;
+            border: 2px solid var(--color-border);
+        }
+
+        .frame-preview-black {
+            background: #2C2C2C;
+            border: 2px solid #1A1A1A;
+        }
+
+        .frame-preview-rough {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            border: 3px dashed var(--color-border);
+        }
+
+        .frame-preview-pastel-pink {
+            background: #FFE4E1;
+            border: 2px solid #FFC0CB;
+        }
+
+        .frame-preview-pastel-blue {
+            background: #A7D9EE;
+            border: 2px solid #92BEDA;
+        }
+
+        .frame-preview-pastel-green {
+            background: #B4EEB4;
+            border: 2px solid #98FB98;
+        }
+
+        .frame-preview-film-strip {
+            background: #000000;
+            border: 2px solid #333;
+            position: relative;
+        }
+
+        .frame-preview-film-strip::before,
+        .frame-preview-film-strip::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            right: -4px;
+            height: 100%;
+            background-image: radial-gradient(circle at 50% 5px, #000 2px, transparent 3px);
+            background-size: 100% 10px;
+            background-repeat: repeat-y;
+        }
+
+        .frame-preview-film-strip::before {
+            left: -4px;
+        }
+
+        .frame-preview-film-strip::after {
+            right: -4px;
+            left: auto;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-family: var(--font-doodle);
+            font-size: 1.1rem;
+            background: var(--color-background);
+            transition: all 0.2s;
+            color: var(--color-text-main);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .input-field::placeholder {
+            color: var(--color-text-muted);
+            opacity: 0.8;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--color-text-main);
+            background: var(--color-surface);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-main);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-doodle);
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .adjustment-control {
+            margin-bottom: 1rem;
+        }
+
+        .adjustment-control label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            font-family: var(--font-doodle);
+        }
+
+        .adjustment-control .value {
+            font-weight: 400;
+            color: var(--color-text-main);
+            font-family: var(--font-monospace);
+            /* Monospace for values */
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            /* Thicker slider */
+            background: var(--color-border);
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            /* Larger thumb */
+            height: 22px;
+            background: var(--color-text-main);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid var(--color-surface);
+            /* White border around thumb */
+            box-shadow: 1px 1px 0px var(--color-text-main);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            background: var(--color-text-main);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid var(--color-surface);
+            box-shadow: 1px 1px 0px var(--color-text-main);
+        }
+
+
+        .final-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            border-top: 2px solid var(--color-border);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Navigation - Reimagined as "Photobooth" title */
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-brand {
+            font-family: var(--font-doodle);
+            font-size: 4rem;
+            /* Large, prominent title */
+            color: var(--color-text-main);
+            text-decoration: none;
+            font-weight: 400;
+            /* Doodle fonts often look better lighter */
+            border: 4px solid var(--color-border);
+            padding: 0.5rem 2rem;
+            background: var(--color-surface);
+            box-shadow: 8px 8px 0px var(--color-text-main);
+            border-radius: var(--radius-sketch);
+            transform: rotate(-1.5deg);
+            /* Slightly rotated title */
+            position: relative;
+        }
+
+        .nav-links {
+            display: none;
+            /* Hide navigation links for this style */
+        }
+
+        /* Footer - Simplified and moved to a small attribution */
+        .footer {
+            margin-top: 4rem;
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-family: var(--font-doodle);
+        }
+
+        .footer-bottom {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--color-border);
+            /* Dashed separator */
+        }
+
+        .footer-bottom a {
+            color: var(--color-text-main);
+            text-decoration: underline;
+        }
+
+        /* Text Template Styles */
+        .text-templates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .text-template-btn {
+            padding: 0.5rem 1rem;
+            background: var(--color-background);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-family: var(--font-doodle);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 2px 2px 0px var(--color-text-main);
+            color: var(--color-text-main);
+        }
+
+        .text-template-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0px var(--color-text-main);
+            background: var(--color-surface);
+        }
+
+        .text-template-btn:active {
+            transform: translateY(0);
+            box-shadow: 1px 1px 0px var(--color-text-main);
+        }
+
+        /* Sticker Styles */
+        .sticker-item {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+            border: 2px solid transparent;
+            /* Placeholder for active state */
+            border-radius: var(--radius-sketch);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sticker-item:hover {
+            transform: scale(1.2);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .sticker-item:active {
+            transform: scale(0.95);
+        }
+
+        .active-sticker-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--color-background);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sketch);
+            font-size: 1.5rem;
+            font-family: var(--font-doodle);
+            box-shadow: 2px 2px 0px var(--color-text-main);
+        }
+
+        .remove-sticker-btn {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            /* Larger hit area */
+            height: 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            box-shadow: 1px 1px 0px var(--color-text-main);
+        }
+
+        .remove-sticker-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Multi-Photo Grid */
+        .multi-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            padding: 8px;
+            background: var(--color-surface);
+            /* Ensure white background */
+        }
+
+        /* Photostrip Layout */
+        .photostrip-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 8px;
+            background: var(--color-surface);
+        }
+
+        .photostrip-layout .multi-photo-item {
+            aspect-ratio: 4/3;
+            width: 100%;
+        }
+
+        .multi-photo-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #F0EDE6;
+            position: relative;
+            border: 1px solid var(--color-border);
+        }
+
+        .multi-photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .multi-photo-counter {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-monospace);
+        }
+
+        /* Sticker Overlay on Photo */
+        .photo-sticker {
+            position: absolute;
+            font-size: 2rem;
+            user-select: none;
+            z-index: 5;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            pointer-events: none;
+            line-height: 1;
+            /* Prevent extra line height from pushing position */
+        }
+
+        /* Doodle Elements (as seen in inspiration) */
+        .doodle-arrow-right {
+            position: absolute;
+            top: 15%;
+            left: -100px;
+            /* Position to the left of the main content */
+            font-size: 5rem;
+            color: var(--color-text-main);
+            transform: rotate(20deg);
+            z-index: 0;
+            font-family: var(--font-doodle);
+            display: none;
+            /* Hidden by default, show on larger screens */
+        }
+
+        .doodle-scissors {
+            position: absolute;
+            bottom: -50px;
+            right: -80px;
+            font-size: 6rem;
+            color: var(--color-text-main);
+            transform: rotate(-15deg);
+            z-index: 0;
+            display: none;
+            /* Hidden by default, show on larger screens */
+        }
+
+        .doodle-tag-me {
+            position: absolute;
+            top: 60%;
+            left: -120px;
+            font-size: 3rem;
+            color: var(--color-text-main);
+            transform: rotate(5deg);
+            z-index: 0;
+            font-family: var(--font-doodle);
+            line-height: 1;
+            display: none;
+            /* Hidden by default, show on larger screens */
+        }
+
+        .doodle-social-icons {
+            position: absolute;
+            top: 70%;
+            left: -120px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 3rem;
+            z-index: 0;
+            display: none;
+            /* Hidden by default, show on larger screens */
+        }
+
+        .doodle-social-icons a {
+            color: var(--color-text-main);
+            text-decoration: none;
+        }
+
+        .doodle-your-photostrip {
+            position: absolute;
+            top: -60px;
+            right: 0px;
+            font-family: var(--font-doodle);
+            font-size: 3rem;
+            color: var(--color-text-main);
+            line-height: 1;
+            transform: rotate(5deg);
+            z-index: 0;
+            white-space: nowrap;
+            display: none;
+            /* Hidden by default, show on larger screens */
+        }
+
+        .doodle-your-photostrip::after {
+            content: '⤸';
+            /* A swirly arrow or similar */
+            display: block;
+            font-size: 2rem;
+            transform: rotate(40deg) translateX(30px);
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+        }
+
+
+        @media (min-width: 1200px) {
+
+            /* Show doodles on wider screens */
+            .doodle-arrow-right,
+            .doodle-scissors,
+            .doodle-tag-me,
+            .doodle-social-icons,
+            .doodle-your-photostrip {
+                display: block;
+            }
+
+            .doodle-arrow-right {
+                left: -120px;
+            }
+
+            .doodle-scissors {
+                right: -100px;
+            }
+
+            .doodle-tag-me {
+                left: -150px;
+            }
+
+            .doodle-social-icons {
+                left: -150px;
+            }
+
+            .doodle-your-photostrip {
+                right: -20px;
+                top: -80px;
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .nav-brand {
+                font-size: 2rem;
+                padding: 0.3rem 1rem;
+                box-shadow: 3px 3px 0px var(--color-text-main);
+            }
+
+            .step-progress {
+                margin: 1rem auto 1.5rem;
+            }
+
+            .step-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .step-label {
+                font-size: 0.75rem;
+            }
+
+            .step-line {
+                width: 40px;
+            }
+
+            .slide {
+                padding: 0 0.5rem;
+            }
+
+            .slide-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 0.7rem 1rem;
+            }
+
+            .customize-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .preview-container {
+                position: relative;
+                top: 0;
+            }
+
+            .polaroid-frame {
+                transform: rotate(0deg);
+                margin-bottom: 1rem;
+                box-shadow: 3px 3px 0px var(--color-text-main);
+                max-width: 100%;
+            }
+
+            .tab-btn {
+                font-size: 1.3rem;
+                padding: 0.6rem 0.4rem;
+            }
+
+            .label {
+                font-size: 0.9rem;
+            }
+
+            .option-grid {
+                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+                gap: 0.5rem;
+            }
+
+            .text-template-btn {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .input-field {
+                font-size: 1rem;
+            }
+
+            .option-btn {
+                font-size: 0.9rem;
+            }
+
+            .doodle-arrow-right,
+            .doodle-scissors,
+            .doodle-tag-me,
+            .doodle-social-icons,
+            .doodle-your-photostrip {
+                display: none !important;
+            }
+        }
