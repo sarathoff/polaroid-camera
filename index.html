@@ -10,7 +10,7 @@
         gtag('js', new Date());
         gtag('config', 'G-R5GM0GFGRK');
     </script>
-
+    <meta name="google-adsense-account" content="ca-pub-6384260983473792">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -72,32 +72,50 @@
                 <!-- Step 1: Capture Photo -->
                 <div class="slide active" id="step1">
                     <div class="slide-content">
-                        <div class="card">
-                            <h2 class="slide-title">📸 Take or Upload Photo</h2>
-                            <div class="video-container">
-                                <video id="videoElement" autoplay playsinline muted class="hidden"></video>
-                                <div id="videoPlaceholder" class="video-placeholder">
-                                    <div class="video-placeholder-icon">📸</div>
-                                    <div>Ready to snap some fun photos!</div>
-                                </div>
-                                <div id="countdownOverlay" class="countdown-overlay hidden">
-                                    <div id="countdownNumber" class="countdown-number">3</div>
-                                </div>
-                            </div>
-                            <div class="controls-grid" id="cameraControls">
-                                <button class="btn btn-primary" id="startCameraBtn" style="grid-column: 1 / -1;">
-                                    📷 Start Camera
-                                </button>
-                                <button class="btn btn-outline" id="uploadBtn" style="grid-column: 1 / -1;">
-                                    📤 Upload Photo
-                                </button>
-                            </div>
+                        <div class="capture-layout">
+                            <div class="camera-section">
+                                <div class="card">
+                                    <h2 class="slide-title">📸 Capture</h2>
+                                    <div class="video-container-small">
+                                        <video id="videoElement" autoplay playsinline muted class="hidden"></video>
+                                        <div id="videoPlaceholder" class="video-placeholder">
+                                            <div class="video-placeholder-icon">📸</div>
+                                            <div>Ready!</div>
+                                        </div>
+                                        <div id="countdownOverlay" class="countdown-overlay hidden">
+                                            <div id="countdownNumber" class="countdown-number">3</div>
+                                        </div>
+                                    </div>
+                                    <div class="controls-grid" id="cameraControls">
+                                        <button class="btn btn-primary" id="startCameraBtn" style="grid-column: 1 / -1;">
+                                            📷 Start Camera
+                                        </button>
+                                        <button class="btn btn-outline" id="uploadBtn" style="grid-column: 1 / -1;">
+                                            📤 Upload Photo
+                                        </button>
+                                    </div>
 
-                            <div class="controls-grid hidden" id="photoControls">
-                                <button class="btn btn-primary" id="captureBtn">📸 Snap!</button>
-                                <button class="btn btn-primary" id="multiCaptureBtn">📸📸 Photostrip</button>
-                                <button class="btn btn-outline" id="switchCameraBtn">🔄 Switch</button>
-                                <button class="btn btn-outline" id="stopCameraBtn">⏹️ Stop</button>
+                                    <div class="controls-grid hidden" id="photoControls">
+                                        <button class="btn btn-primary" id="captureBtn">📸 Snap!</button>
+                                        <button class="btn btn-primary" id="multiCaptureBtn">📸 Strip</button>
+                                        <button class="btn btn-outline" id="switchCameraBtn">🔄</button>
+                                        <button class="btn btn-outline" id="stopCameraBtn">⏹️</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="preview-section-capture">
+                                <div class="card">
+                                    <h2 class="slide-title">Preview</h2>
+                                    <div id="capturePreview" class="capture-preview-container">
+                                        <div class="empty-preview">
+                                            <div class="empty-preview-icon">🖼️</div>
+                                            <p>Your photos will appear here</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary hidden" id="continueToCustomize" style="margin-top: 1rem;">
+                                        Continue to Customize →
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,94 +124,100 @@
                 <!-- Step 2: Customize -->
                 <div class="slide" id="step2">
                     <div class="slide-content">
-                        <div class="customize-layout">
-                            <div class="preview-section">
-                                <div id="polaroidPreview" class="preview-container">
+                        <div class="customize-layout-improved">
+                            
+                            <!-- Left: Live Preview -->
+                            <div class="preview-panel">
+                                <div class="preview-header">
+                                    <h3 class="preview-title">👁️ Live Preview</h3>
+                                    <span class="preview-hint">Changes apply instantly</span>
+                                </div>
+                                <div id="polaroidPreview" class="preview-container-enhanced">
                                     <!-- Preview will be rendered here -->
                                 </div>
                             </div>
-                            <div class="customization-section">
-                                <div class="card" id="customizationCard">
-                                    <h2 class="slide-title">✨ Customize Your Photo</h2>
-                                    <div class="tab-menu">
-                                        <button class="tab-btn active" onclick="showTab(event, 'filters')">🎨</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'adjust')">⚙️</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'layout')">📐</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'frames')">🖼️</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'frame-color')">🌈</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'text')">✏️</button>
-                                        <button class="tab-btn" onclick="showTab(event, 'stickers')">😊</button>
-                                    </div>
 
-                                    <div id="tab-filters" class="tab-pane active">
-                                        <label class="label">Choose a look:</label>
-                                        <div class="option-grid" id="filterPresets"></div>
-                                    </div>
-
-                                    <div id="tab-adjust" class="tab-pane">
-                                        <label class="label">Fine-tune your photo:</label>
-                                    </div>
-
-                                    <div id="tab-layout" class="tab-pane">
-                                        <label class="label">Choose layout:</label>
-                                        <div class="option-grid" id="layoutOptions"></div>
-                                    </div>
-
-                                    <div id="tab-frames" class="tab-pane">
-                                        <label class="label">Choose a frame style:</label>
-                                        <div class="option-grid" id="frameOptions"></div>
-                                    </div>
-
-                                    <div id="tab-frame-color" class="tab-pane">
-                                        <div class="section">
-                                            <label class="label">Pick a frame color:</label>
-                                            <div class="color-picker-grid" id="frameColorPresets"></div>
-                                            <div class="color-input-wrapper">
-                                                <label class="label" for="customFrameColor" style="margin-bottom:0;">Custom:</label>
-                                                <input type="color" id="customFrameColor" class="color-input">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="tab-text" class="tab-pane">
-                                        <div class="section">
-                                            <label class="label">Quick templates:</label>
-                                            <div class="text-templates" id="textTemplates"></div>
-                                        </div>
-                                        <div class="section">
-                                            <label class="label">Write a little note:</label>
-                                            <input type="text" id="customText" class="input-field" placeholder="A moment in time..." maxlength="40">
-                                        </div>
-                                        <div class="section">
-                                            <label class="label">Pick a handwriting style:</label>
-                                            <div class="option-grid" id="fontOptions"></div>
-                                        </div>
-                                        <div class="section">
-                                            <label class="label">Text Color:</label>
-                                            <div class="color-picker-grid" id="textColorPresets"></div>
-                                            <div class="color-input-wrapper">
-                                                <label class="label" for="customTextColor" style="margin-bottom:0;">Custom:</label>
-                                                <input type="color" id="customTextColor" class="color-input">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="tab-stickers" class="tab-pane">
-                                        <div class="section">
-                                            <label class="label">Add some flair:</label>
-                                            <div class="option-grid" id="stickerOptions"></div>
-                                        </div>
-                                        <div class="section" id="activeStickersList" style="display: none;">
-                                            <label class="label">Your stickers:</label>
-                                            <div id="stickersList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
-                                        </div>
-                                    </div>
+                            <!-- Right: Customization Controls -->
+                            <div class="controls-panel">
+                                <div class="controls-header">
+                                    <h2 class="controls-title">✨ Customize Your Photo</h2>
+                                    <p class="controls-subtitle">Make it uniquely yours</p>
                                 </div>
-                                <div class="slide-navigation">
-                                    <button class="btn btn-outline" id="backToCapture">← Back</button>
-                                    <button class="btn btn-primary" id="nextToDownload">Next →</button>
+
+                                <div class="customize-sections-enhanced">
+                                    
+                                    <!-- 1. Filter Style -->
+                                    <div class="customize-card">
+                                        <div class="card-header-compact">
+                                            <span class="card-icon">🎨</span>
+                                            <span class="card-title">Filter</span>
+                                        </div>
+                                        <div class="filter-grid-enhanced" id="filterPresets"></div>
+                                    </div>
+
+                                    <!-- 2. Frame Color -->
+                                    <div class="customize-card">
+                                        <div class="card-header-compact">
+                                            <span class="card-icon">🖼️</span>
+                                            <span class="card-title">Frame Color</span>
+                                        </div>
+                                        <div class="color-palette" id="frameColorPresets"></div>
+                                    </div>
+
+                                    <!-- 3. Add Text -->
+                                    <div class="customize-card">
+                                        <div class="card-header-compact">
+                                            <span class="card-icon">✏️</span>
+                                            <span class="card-title">Add Text</span>
+                                        </div>
+                                        <div class="text-templates-row" id="textTemplates"></div>
+                                        <input type="text" id="customText" class="text-input-enhanced" placeholder="Type your message here..." maxlength="40">
+                                        <div class="text-style-row">
+                                            <div class="text-color-selector">
+                                                <label class="selector-label">Color</label>
+                                                <div class="color-palette-mini" id="textColorPresets"></div>
+                                            </div>
+                                            <div class="text-font-selector">
+                                                <label class="selector-label">Font</label>
+                                                <div class="font-options-mini" id="fontOptions"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 4. Stickers -->
+                                    <div class="customize-card">
+                                        <div class="card-header-compact">
+                                            <span class="card-icon">😊</span>
+                                            <span class="card-title">Stickers</span>
+                                        </div>
+                                        <div class="sticker-grid-enhanced" id="stickerOptions"></div>
+                                        <div id="activeStickersList" class="active-stickers-bar" style="display: none;">
+                                            <label class="selector-label">Active</label>
+                                            <div id="stickersList" class="active-stickers-row"></div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="customize-card" id="layoutGroup" style="display: none;">
+                                        <div class="card-header-compact">
+                                            <span class="card-icon">📐</span>
+                                            <span class="card-title">Layout</span>
+                                        </div>
+                                        <div class="layout-grid" id="layoutOptions"></div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <div class="customize-navigation">
+                                    <button class="btn btn-outline btn-nav" id="backToCapture">
+                                        <span>←</span> Back
+                                    </button>
+                                    <button class="btn btn-primary btn-nav" id="nextToDownload">
+                                        Continue <span>→</span>
+                                    </button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -202,15 +226,24 @@
                 <div class="slide" id="step3">
                     <div class="slide-content">
                         <div class="card download-card">
-                            <h2 class="slide-title">🎉 Your Photo is Ready!</h2>
-                            <div id="finalPreview" class="final-preview-container"></div>
-                            <div class="download-actions">
-                                <button class="btn btn-primary btn-large" id="downloadBtn">
-                                    📥 Download Photo
-                                </button>
-                                <button class="btn btn-outline" id="clearBtn">
-                                    🔄 Start Over
-                                </button>
+                            <div id="processingOverlay" class="processing-overlay">
+                                <div class="processing-content">
+                                    <div class="processing-spinner"></div>
+                                    <h3 class="processing-text">Processing your photo...</h3>
+                                    <div class="processing-countdown" id="processingCountdown">3</div>
+                                </div>
+                            </div>
+                            <div id="downloadContent" class="hidden">
+                                <h2 class="slide-title">🎉 Your Photo is Ready!</h2>
+                                <div id="finalPreview" class="final-preview-container"></div>
+                                <div class="download-actions">
+                                    <button class="btn btn-primary btn-large" id="downloadBtn">
+                                        📥 Download Photo
+                                    </button>
+                                    <button class="btn btn-outline" id="clearBtn">
+                                        🔄 Start Over
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

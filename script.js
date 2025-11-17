@@ -110,20 +110,46 @@
             '#333333', '#FFFFFF', '#E57373', '#A7D9EE', '#B4EEB4', '#FFD1DC', '#4B0082', '#000000'
         ];
 
-        // Text Templates
+        // Text Templates - Expanded
         const textTemplates = [
-            { text: 'Happy Birthday! 🎂', emoji: '🎂' },
-            { text: 'Happy Anniversary! 💕', emoji: '💕' },
-            { text: 'Love You! ❤️', emoji: '❤️' },
-            { text: 'Best Friends Forever! 👯', emoji: '👯' },
-            { text: 'Happy Friday! 🎉', emoji: '🎉' },
-            { text: 'Weekend Vibes ✨', emoji: '✨' },
-            { text: 'Good Times! 😊', emoji: '😊' },
-            { text: 'Making Memories 📸', emoji: '📸' },
-            { text: 'Squad Goals 💯', emoji: '💯' },
-            { text: 'Living My Best Life 🌟', emoji: '🌟' },
-            { text: 'Blessed 🙏', emoji: '🙏' },
-            { text: 'Feeling Grateful 💖', emoji: '💖' }
+            // Celebrations
+            { text: 'Happy Birthday! 🎂', emoji: '🎂', category: 'celebration' },
+            { text: 'Happy Anniversary! 💕', emoji: '💕', category: 'celebration' },
+            { text: 'Congratulations! 🎉', emoji: '🎉', category: 'celebration' },
+            { text: 'Happy Graduation! 🎓', emoji: '🎓', category: 'celebration' },
+            { text: 'Happy New Year! 🎊', emoji: '🎊', category: 'celebration' },
+            { text: 'Merry Christmas! 🎄', emoji: '🎄', category: 'celebration' },
+            { text: 'Happy Halloween! 🎃', emoji: '🎃', category: 'celebration' },
+            { text: 'Happy Valentine\'s! 💝', emoji: '💝', category: 'celebration' },
+            
+            // Love & Friendship
+            { text: 'Love You! ❤️', emoji: '❤️', category: 'love' },
+            { text: 'Best Friends Forever! 👯', emoji: '👯', category: 'love' },
+            { text: 'You\'re Amazing! 💖', emoji: '💖', category: 'love' },
+            { text: 'Miss You! 💕', emoji: '💕', category: 'love' },
+            { text: 'Thinking of You 💭', emoji: '💭', category: 'love' },
+            
+            // Fun & Vibes
+            { text: 'Happy Friday! 🎉', emoji: '🎉', category: 'fun' },
+            { text: 'Weekend Vibes ✨', emoji: '✨', category: 'fun' },
+            { text: 'Good Times! 😊', emoji: '😊', category: 'fun' },
+            { text: 'Squad Goals 💯', emoji: '💯', category: 'fun' },
+            { text: 'Living My Best Life 🌟', emoji: '🌟', category: 'fun' },
+            { text: 'Party Time! 🥳', emoji: '🥳', category: 'fun' },
+            { text: 'Let\'s Go! 🚀', emoji: '🚀', category: 'fun' },
+            
+            // Memories & Moments
+            { text: 'Making Memories 📸', emoji: '📸', category: 'memory' },
+            { text: 'Blessed 🙏', emoji: '🙏', category: 'memory' },
+            { text: 'Feeling Grateful 💖', emoji: '💖', category: 'memory' },
+            { text: 'Forever Moment ⏰', emoji: '⏰', category: 'memory' },
+            { text: 'Unforgettable 🌈', emoji: '🌈', category: 'memory' },
+            
+            // Travel & Adventure
+            { text: 'Adventure Time! 🗺️', emoji: '🗺️', category: 'travel' },
+            { text: 'Vacation Mode ✈️', emoji: '✈️', category: 'travel' },
+            { text: 'Beach Vibes 🏖️', emoji: '🏖️', category: 'travel' },
+            { text: 'Wanderlust 🌍', emoji: '🌍', category: 'travel' }
         ];
 
         // Stickers
@@ -151,41 +177,48 @@
                 filterPresetsContainer.appendChild(btn);
             });
 
-            // Adjustments
-            const adjustContainer = document.getElementById('tab-adjust');
-            adjustContainer.innerHTML = '';
-            adjustmentConfigs.forEach(adj => {
-                const control = document.createElement('div');
-                control.className = 'adjustment-control';
-                control.innerHTML = `
-                    <label for="${adj.id}">
-                        <span>${adj.name}</span>
-                        <span class="value" id="${adj.id}Value">${adjustments[adj.id]}%</span>
-                    </label>
-                    <input type="range" id="${adj.id}" min="${adj.min}" max="${adj.max}" value="${adjustments[adj.id]}">
-                `;
-                adjustContainer.appendChild(control);
+            // Adjustments (removed - not in new UI)
+            // const adjustContainer = document.getElementById('tab-adjust');
+            // if (adjustContainer) {
+            //     adjustContainer.innerHTML = '';
+            //     adjustmentConfigs.forEach(adj => {
+            //         const control = document.createElement('div');
+            //         control.className = 'adjustment-control';
+            //         control.innerHTML = `
+            //             <label for="${adj.id}">
+            //                 <span>${adj.name}</span>
+            //                 <span class="value" id="${adj.id}Value">${adjustments[adj.id]}%</span>
+            //             </label>
+            //             <input type="range" id="${adj.id}" min="${adj.min}" max="${adj.max}" value="${adjustments[adj.id]}">
+            //         `;
+            //         adjustContainer.appendChild(control);
 
-                document.getElementById(adj.id).addEventListener('input', (e) => {
-                    adjustments[adj.id] = e.target.value;
-                    document.getElementById(`${adj.id}Value`).textContent = `${e.target.value}%`;
-                    selectedFilterPreset = 'custom';
-                    updateFilterPresetButtons();
-                    renderPreview();
-                });
-            });
+            //         document.getElementById(adj.id).addEventListener('input', (e) => {
+            //             adjustments[adj.id] = e.target.value;
+            //             document.getElementById(`${adj.id}Value`).textContent = `${e.target.value}%`;
+            //             selectedFilterPreset = 'custom';
+            //             updateFilterPresetButtons();
+            //             debouncedRender();
+            //         });
+            //     });
+            // }
 
-            // Fonts
+            // Fonts - Compact version for customize section
             const fontContainer = document.getElementById('fontOptions');
-            fontContainer.innerHTML = '';
-            fonts.forEach(font => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn' + (font.family === selectedFont ? ' active' : '');
-                btn.textContent = font.name;
-                btn.style.fontFamily = font.family;
-                btn.onclick = () => selectFont(font.family, btn);
-                fontContainer.appendChild(btn);
-            });
+            if (fontContainer) {
+                fontContainer.innerHTML = '';
+                // Show only first 4 fonts for compact display
+                const compactFonts = fonts.slice(0, 4);
+                compactFonts.forEach(font => {
+                    const btn = document.createElement('button');
+                    btn.className = 'font-option-btn' + (font.family === selectedFont ? ' active' : '');
+                    btn.textContent = 'Aa';
+                    btn.style.fontFamily = font.family;
+                    btn.title = font.name;
+                    btn.onclick = () => selectFont(font.family, btn);
+                    fontContainer.appendChild(btn);
+                });
+            }
 
             // Layouts
             const layoutContainer = document.getElementById('layoutOptions');
@@ -202,20 +235,22 @@
                 });
             }
 
-            // Frames
-            const frameContainer = document.getElementById('frameOptions');
-            frameContainer.innerHTML = '';
-            framePresets.forEach(frame => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn' + (frame.id === selectedFrame ? ' active' : '');
-                const previewClass = `frame-preview-${frame.id}`;
-                btn.innerHTML = `
-                    <div class="option-preview-box ${previewClass}"></div>
-                    <div class="option-name">${frame.name}</div>
-                `;
-                btn.onclick = () => selectFrame(frame.id, btn);
-                frameContainer.appendChild(btn);
-            });
+            // Frames (removed - not in new simplified UI)
+            // const frameContainer = document.getElementById('frameOptions');
+            // if (frameContainer) {
+            //     frameContainer.innerHTML = '';
+            //     framePresets.forEach(frame => {
+            //         const btn = document.createElement('button');
+            //         btn.className = 'option-btn' + (frame.id === selectedFrame ? ' active' : '');
+            //         const previewClass = `frame-preview-${frame.id}`;
+            //         btn.innerHTML = `
+            //             <div class="option-preview-box ${previewClass}"></div>
+            //             <div class="option-name">${frame.name}</div>
+            //         `;
+            //         btn.onclick = () => selectFrame(frame.id, btn);
+            //         frameContainer.appendChild(btn);
+            //     });
+            // }
 
             // Frame Color Presets
             const frameColorPresetsContainer = document.getElementById('frameColorPresets');
@@ -325,7 +360,7 @@
 
         function selectFont(family, element) {
             selectedFont = family;
-            document.querySelectorAll('#fontOptions .option-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#fontOptions .font-option-btn').forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
             renderPreview();
         }
@@ -353,7 +388,27 @@
             if (customFrameColorInput) {
                 customFrameColorInput.value = color;
             }
+            
+            // Auto-adjust text color for better contrast
+            autoAdjustTextColor(color);
             renderPreview();
+        }
+
+        function autoAdjustTextColor(bgColor) {
+            // Calculate brightness of background color
+            const hex = bgColor.replace('#', '');
+            const r = parseInt(hex.substr(0, 2), 16);
+            const g = parseInt(hex.substr(2, 2), 16);
+            const b = parseInt(hex.substr(4, 2), 16);
+            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            
+            // If background is dark, use white text; if light, use dark text
+            const newTextColor = brightness < 128 ? '#FFFFFF' : '#333333';
+            
+            // Only auto-adjust if user hasn't manually changed text color recently
+            if (selectedTextColor === '#333333' || selectedTextColor === '#FFFFFF') {
+                selectTextColor(newTextColor);
+            }
         }
 
         function selectTextColor(color, element = null) {
@@ -528,10 +583,34 @@
             capturedPhoto = canvas.toDataURL('image/jpeg', 0.95);
             multiPhotos = [];
             isMultiCapture = false;
-            showOutputUI();
-            renderPreview();
+            updateCapturePreview();
             captureBtn.disabled = false;
             multiCaptureBtn.disabled = false;
+        }
+
+        function updateCapturePreview() {
+            const capturePreview = document.getElementById('capturePreview');
+            const continueBtn = document.getElementById('continueToCustomize');
+            
+            if (!capturedPhoto && multiPhotos.length === 0) return;
+
+            if (isMultiCapture && multiPhotos.length > 0) {
+                const photosHTML = multiPhotos.map((photo, idx) => `
+                    <div class="captured-thumb">
+                        <img src="${photo}" alt="Photo ${idx + 1}">
+                    </div>
+                `).join('');
+                capturePreview.innerHTML = `<div class="captured-thumbs-grid">${photosHTML}</div>`;
+            } else if (capturedPhoto) {
+                capturePreview.innerHTML = `
+                    <div class="captured-single">
+                        <img src="${capturedPhoto}" alt="Captured Photo">
+                    </div>
+                `;
+            }
+            
+            // Show continue button
+            continueBtn.classList.remove('hidden');
         }
 
         async function captureMultiPhotos() {
@@ -564,6 +643,9 @@
                 ctx.restore();
                 multiPhotos.push(canvas.toDataURL('image/jpeg', 0.95));
 
+                // Update preview after each capture
+                updateCapturePreview();
+
                 // Show "Captured!" message briefly
                 if (i < 3) {
                     countdownOverlay.classList.remove('hidden');
@@ -583,8 +665,10 @@
             countdownOverlay.classList.add('hidden');
 
             capturedPhoto = null;
-            showOutputUI();
-            renderPreview();
+            
+            // Show layout options for multi-photo
+            document.getElementById('layoutGroup').style.display = 'block';
+            
             multiCaptureBtn.disabled = false;
             captureBtn.disabled = false;
         }
@@ -597,8 +681,7 @@
                     capturedPhoto = e.target.result;
                     multiPhotos = [];
                     isMultiCapture = false;
-                    showOutputUI();
-                    renderPreview();
+                    updateCapturePreview();
                 };
                 reader.readAsDataURL(file);
                 event.target.value = '';
@@ -631,57 +714,94 @@
                 .join(' ');
         }
 
+        // Debounce function for performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Debounced render for better performance
+        const debouncedRender = debounce(renderPreview, 100);
+
         function renderPreview() {
             if (!capturedPhoto && multiPhotos.length === 0) return;
 
-            const customText = customTextEl.value;
-            const filterStyle = buildFilterString();
-            const currentFrameConfig = framePresets.find(f => f.id === selectedFrame);
-            const frameClass = currentFrameConfig ? currentFrameConfig.className : '';
+            // Use requestAnimationFrame for smooth rendering
+            requestAnimationFrame(() => {
+                const customText = customTextEl.value;
+                const filterStyle = buildFilterString();
+                const currentFrameConfig = framePresets.find(f => f.id === selectedFrame);
+                const frameClass = currentFrameConfig ? currentFrameConfig.className : '';
+                
+                renderPreviewContent(customText, filterStyle, frameClass);
+            });
+        }
 
-            if (isMultiCapture && multiPhotos.length > 0) {
-                // Multi-photo layout based on selectedLayout
-                const photosHTML = multiPhotos.map((photo, idx) => `
-                    <div class="multi-photo-item">
-                        <img src="${photo}" style="filter: ${filterStyle}" alt="Photo ${idx + 1}">
-                        ${activeStickers.map(sticker => `
-                            <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
-                        `).join('')}
-                    </div>
-                `).join('');
+        function renderPreviewContent(customText, filterStyle, frameClass) {
 
-                const layoutClass = selectedLayout === 'photostrip' ? 'photostrip-layout' : 'multi-photo-grid';
-
-                polaroidPreview.innerHTML = `
-                    <div class="polaroid-frame ${frameClass}" style="background: ${selectedFrameColor}">
-                        <div class="${layoutClass}">
-                            ${photosHTML}
-                        </div>
-                        <div class="polaroid-text" style="font-family: ${selectedFont}; color: ${selectedTextColor}">${customText || ''}</div>
-                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
-                    </div>
-                `;
-            } else if (capturedPhoto) {
-                // Single photo
-                polaroidPreview.innerHTML = `
-                    <div class="polaroid-frame ${frameClass}" style="background: ${selectedFrameColor}">
-                        <div class="polaroid-photo" style="position: relative;">
-                            <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview">
+                if (isMultiCapture && multiPhotos.length > 0) {
+                    // Multi-photo layout based on selectedLayout
+                    const photosHTML = multiPhotos.map((photo, idx) => `
+                        <div class="multi-photo-item">
+                            <img src="${photo}" style="filter: ${filterStyle}" alt="Photo ${idx + 1}" loading="lazy">
                             ${activeStickers.map(sticker => `
                                 <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
                             `).join('')}
                         </div>
-                        <div class="polaroid-text" style="font-family: ${selectedFont}; color: ${selectedTextColor}">${customText || ''}</div>
-                        <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
-                    </div>
-                `;
-            }
+                    `).join('');
+
+                    const layoutClass = selectedLayout === 'photostrip' ? 'photostrip-layout' : 'multi-photo-grid';
+
+                    polaroidPreview.innerHTML = `
+                        <div class="polaroid-frame ${frameClass}" style="background: ${selectedFrameColor}">
+                            <div class="${layoutClass}">
+                                ${photosHTML}
+                            </div>
+                            <div class="polaroid-text" style="font-family: ${selectedFont}; color: ${selectedTextColor}">${customText || ''}</div>
+                            <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                        </div>
+                    `;
+                } else if (capturedPhoto) {
+                    // Single photo
+                    polaroidPreview.innerHTML = `
+                        <div class="polaroid-frame ${frameClass}" style="background: ${selectedFrameColor}">
+                            <div class="polaroid-photo" style="position: relative;">
+                                <img src="${capturedPhoto}" style="filter: ${filterStyle}" alt="Polaroid Preview" loading="lazy">
+                                ${activeStickers.map(sticker => `
+                                    <div class="photo-sticker" style="left: ${sticker.x}%; top: ${sticker.y}%;">${sticker.emoji}</div>
+                                `).join('')}
+                            </div>
+                            <div class="polaroid-text" style="font-family: ${selectedFont}; color: ${selectedTextColor}">${customText || ''}</div>
+                            <div class="polaroid-date">${new Date().toLocaleDateString()}</div>
+                        </div>
+                    `;
+                }
         }
 
         // --- FINAL DOWNLOAD ---
 
         function downloadPolaroid() {
-            if (!capturedPhoto && multiPhotos.length === 0) return;
+            if (!capturedPhoto && multiPhotos.length === 0) {
+                console.error('No photo to download');
+                alert('Please capture or upload a photo first!');
+                return;
+            }
+
+            console.log('Starting download...', {
+                capturedPhoto: !!capturedPhoto,
+                multiPhotos: multiPhotos.length,
+                selectedLayout,
+                selectedFrameColor,
+                selectedTextColor,
+                customText: customTextEl.value
+            });
 
             const dlCanvas = document.createElement('canvas');
             const ctx = dlCanvas.getContext('2d');
@@ -751,8 +871,9 @@
 
                                     // Draw stickers
                                     activeStickers.forEach(sticker => {
-                                        ctx.font = `40px ${selectedFont}`;
+                                        ctx.font = `40px Arial, sans-serif`;
                                         ctx.fillStyle = '#000000';
+                                        ctx.textBaseline = 'middle';
                                         ctx.fillText(sticker.emoji, x + (stripPhotoWidth * sticker.x / 100), y + (stripPhotoHeight * sticker.y / 100));
                                     });
                                 });
@@ -786,8 +907,9 @@
 
                                     // Draw stickers
                                     activeStickers.forEach(sticker => {
-                                        ctx.font = `40px ${selectedFont}`;
+                                        ctx.font = `40px Arial, sans-serif`;
                                         ctx.fillStyle = '#000000';
+                                        ctx.textBaseline = 'middle';
                                         ctx.fillText(sticker.emoji, x + (gridSize * sticker.x / 100), y + (gridSize * sticker.y / 100));
                                     });
                                 });
@@ -824,8 +946,9 @@
 
                     // Draw stickers
                     activeStickers.forEach(sticker => {
-                        ctx.font = `50px ${selectedFont}`;
+                        ctx.font = `50px Arial, sans-serif`;
                         ctx.fillStyle = '#000000';
+                        ctx.textBaseline = 'middle';
                         ctx.fillText(sticker.emoji, photoPadding + (photoSize * sticker.x / 100), photoPadding + (photoSize * sticker.y / 100));
                     });
 
@@ -839,7 +962,9 @@
         function finishDownload(ctx, baseWidth, baseHeight, photoPadding) {
             const customText = customTextEl.value;
             if (customText.trim()) {
-                ctx.font = `700 40px ${selectedFont}`;
+                // Extract font family name from the full font string
+                const fontFamily = selectedFont.replace(/['"]/g, '').split(',')[0].trim();
+                ctx.font = `700 40px ${fontFamily}, cursive`;
                 ctx.fillStyle = selectedTextColor;
                 ctx.textAlign = 'center';
                 ctx.fillText(customText, baseWidth / 2, baseHeight - 90, baseWidth - 80);
@@ -855,10 +980,18 @@
             ctx.textAlign = 'left';
             ctx.fillText('Polaroid Booth', photoPadding, baseHeight - 30);
 
-            const link = document.createElement('a');
-            link.download = `polaroid-booth-${Date.now()}.png`;
-            link.href = ctx.canvas.toDataURL('image/png');
-            link.click();
+            ctx.globalAlpha = 1.0;
+
+            try {
+                const link = document.createElement('a');
+                link.download = `polaroid-booth-${Date.now()}.png`;
+                link.href = ctx.canvas.toDataURL('image/png');
+                link.click();
+                console.log('Download initiated successfully');
+            } catch (error) {
+                console.error('Download error:', error);
+                alert('Download failed. Please try again.');
+            }
         }
 
         // --- SLIDER NAVIGATION ---
@@ -878,6 +1011,18 @@
                     item.classList.remove('active');
                 }
             });
+
+            // Update slide active states for animations
+            document.querySelectorAll('.slide').forEach((slide, index) => {
+                if (index + 1 === step) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showOutputUI() {
@@ -898,13 +1043,38 @@
         customTextEl.addEventListener('input', renderPreview);
 
         // Slider navigation
+        document.getElementById('continueToCustomize').addEventListener('click', () => {
+            goToStep(2);
+            renderPreview();
+        });
         document.getElementById('backToCapture').addEventListener('click', () => goToStep(1));
         document.getElementById('nextToDownload').addEventListener('click', () => {
+            goToStep(3);
+            startProcessing();
+        });
+
+        async function startProcessing() {
+            const processingOverlay = document.getElementById('processingOverlay');
+            const downloadContent = document.getElementById('downloadContent');
+            const countdownEl = document.getElementById('processingCountdown');
+            
+            processingOverlay.classList.remove('hidden');
+            downloadContent.classList.add('hidden');
+            
+            // Countdown from 3 to 1
+            for (let i = 3; i > 0; i--) {
+                countdownEl.textContent = i;
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+            
             // Copy preview to final preview
             const preview = document.getElementById('polaroidPreview').innerHTML;
             document.getElementById('finalPreview').innerHTML = preview;
-            goToStep(3);
-        });
+            
+            // Hide processing, show download
+            processingOverlay.classList.add('hidden');
+            downloadContent.classList.remove('hidden');
+        }
 
         // --- INITIALIZE ON LOAD ---
         initializeUI();
