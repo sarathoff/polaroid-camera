@@ -1,12 +1,19 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap location
 Sitemap: https://polaroidbooth.com/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
 
-# Disallow specific paths (if any)
-# Disallow: /admin/
-# Disallow: /private/
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow test files
+Disallow: /*-test.html
+Disallow: /test.html
