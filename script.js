@@ -1293,9 +1293,8 @@ let currentStep = 1;
 
 function goToStep(step) {
     currentStep = step;
-    const sliderWrapper = document.getElementById('sliderWrapper');
-    const offset = -(step - 1) * (100 / 3);
-    sliderWrapper.style.transform = `translateX(${offset}%)`;
+    document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+    document.getElementById(`step${step}`).classList.remove('hidden');
 
     // Update step progress
     document.querySelectorAll('.step-item').forEach((item, index) => {
@@ -1303,16 +1302,6 @@ function goToStep(step) {
             item.classList.add('active');
         } else {
             item.classList.remove('active');
-        }
-    });
-
-    // Update slide active states for animations
-    const slides = document.querySelectorAll('.slide:not(.hidden-slide)');
-    slides.forEach((slide, index) => {
-        if (index + 1 === step) {
-            slide.classList.add('active');
-        } else {
-            slide.classList.remove('active');
         }
     });
 
@@ -1378,63 +1367,13 @@ window.selectLayoutAndContinue = function (layout) {
     }, 300);
 };
 
-// Slider navigation
-document.getElementById('continueToCustomize').addEventListener('click', () => {
-    goToStep(3);
-    renderPreview();
-});
-document.getElementById('backToCapture').addEventListener('click', () => goToStep(2));
-
-async function startProcessing() {
-    const processingOverlay = document.getElementById('processingOverlay');
-    const downloadContent = document.getElementById('downloadContent');
-    const countdownEl = document.getElementById('processingCountdown');
-
-    processingOverlay.classList.remove('hidden');
-    downloadContent.classList.add('hidden');
-
-    // Countdown from 3 to 1
-    for (let i = 3; i > 0; i--) {
-        countdownEl.textContent = i;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-
-    // Copy preview to final preview
-    const preview = document.getElementById('polaroidPreview').innerHTML;
-    document.getElementById('finalPreview').innerHTML = preview;
-
-    // Hide processing, show download
-    processingOverlay.classList.add('hidden');
-    downloadContent.classList.remove('hidden');
-}
-
-// --- LANDING PAGE NAVIGATION ---
-window.enterStudio = function () {
-    document.getElementById('landingPage').classList.add('hidden');
-    document.getElementById('sliderContainer').classList.remove('hidden');
-    document.getElementById('stepProgress').classList.remove('hidden');
-    goToStep(1);
-};
-
-window.backToLanding = function () {
-    document.getElementById('landingPage').classList.remove('hidden');
-    document.getElementById('sliderContainer').classList.add('hidden');
-    document.getElementById('stepProgress').classList.add('hidden');
-    document.getElementById('mainNav').classList.add('hidden');
-    resetToDefaults();
-};
-
-window.backToLayout = function () {
-    goToStep(1);
-};
 
 // --- INITIAL STATE: Show landing page on load ---
 window.addEventListener('DOMContentLoaded', function () {
-    // Ensure landing page is visible and studio is hidden on initial load
+    // Ensure landing page is visible and app is hidden on initial load
     document.getElementById('landingPage').classList.remove('hidden');
-    document.getElementById('sliderContainer').classList.add('hidden');
+    document.getElementById('app').classList.add('hidden');
     document.getElementById('stepProgress').classList.add('hidden');
-    document.getElementById('mainNav').classList.add('hidden');
 });
 
 // Function to enter the Studio (Start Creating)
@@ -1443,8 +1382,8 @@ function enterStudio() {
     document.getElementById('landingPage').classList.add('hidden');
 
     // 2. Show the App Elements
+    document.getElementById('app').classList.remove('hidden');
     document.getElementById('stepProgress').classList.remove('hidden');
-    document.getElementById('sliderContainer').classList.remove('hidden');
 
     // 3. Ensure the camera permissions/setup starts if needed (optional)
     // startCamera(); 
@@ -1456,8 +1395,8 @@ function enterStudio() {
 // Function to go back to Landing Page (triggered by the Back button in Step 1)
 function backToLanding() {
     // 1. Hide the App Elements
+    document.getElementById('app').classList.add('hidden');
     document.getElementById('stepProgress').classList.add('hidden');
-    document.getElementById('sliderContainer').classList.add('hidden');
 
     // 2. Show the Landing Page
     document.getElementById('landingPage').classList.remove('hidden');
@@ -1465,5 +1404,64 @@ function backToLanding() {
     // 3. Scroll to top
     window.scrollTo(0, 0);
 }
+
+document.getElementById('continueToCustomize').addEventListener('click', () => {
+    goToStep(3);
+    renderPreview();
+});
+
+document.getElementById('backToCapture').addEventListener('click', () => goToStep(2));
+
 // --- INITIALIZE ON LOAD ---
 initializeUI();
+
+// Initialize Live Filters for Capture Step
+function initializeLiveFilters() {
+    const liveFilterContainer = document.getElementById('liveFilterOptions');
+    if (!liveFilterContainer) {
+        console.log('Live filter container not found');
+        return;
+    }
+
+    console.log('Initializing live filters...');
+    liveFilterContainer.innerHTML = '';
+
+    // Background colors for each filter to make them visible
+    const filterColors = {
+        'none': '#f5f5f5',
+        'vintage': '#d4a574',
+        'classic': '#c9b8a0',
+        'bw': '#888888',
+        'warm': '#e8b896',
+        'retro': '#d9a86c',
+        'dreamy': '#e6d5f0',
+        'cool': '#b8d4e8',
+        'faded': '#d8d8d8',
+        'noir': '#4a4a4a',
+        'sunset': '#f4a460',
+        'arctic': '#d0e8f0'
+    };
+
+    filterPresets.forEach(preset => {
+        const filterBtn = document.createElement('div');
+        filterBtn.className = 'filter-option-mini' + (preset.id === selectedFilterPreset ? ' selected' : '');
+        filterBtn.style.backgroundColor = filterColors[preset.id] || '#f5f5f5';
+        filterBtn.innerHTML = `<span>${preset.name}</span>`;
+        filterBtn.onclick = () => {
+            selectedFilterPreset = preset.id;
+            adjustments = { ...preset.values };
+            // Update visual selection
+            document.querySelectorAll('.filter-option-mini').forEach(btn => btn.classList.remove('selected'));
+            filterBtn.classList.add('selected');
+            console.log('Filter selected:', preset.name);
+        };
+        liveFilterContainer.appendChild(filterBtn);
+    });
+
+    console.log('Live filters initialized:', filterPresets.length, 'filters');
+}
+
+// Call initializeLiveFilters on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', function () {
+    initializeLiveFilters();
+});
